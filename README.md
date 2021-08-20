@@ -1,6 +1,6 @@
 <table class="sphinxhide">
  <tr>
-   <td align="center"><img src="docs/source/docs/media/xilinx-logo.png" width="30%"/><h1> Versal AI Core - VCK190 Ethernet Target Reference Design </h1>
+   <td align="center"><img src="source/docs/media/xilinx-logo.png" width="30%"/><h1> Versal AI Core - VCK190 Ethernet Target Reference Design </h1>
    </td>
  </tr>
 </table>
