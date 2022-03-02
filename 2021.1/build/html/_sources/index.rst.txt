@@ -21,6 +21,7 @@ Contents:
    :caption: Versions
    :hidden:
 
-   Master (2021.1) <https://xilinx.github.io/vck190-ethernet-trd/2021.1/build/html/index.html>
+   2021.1 <https://xilinx.github.io/vck190-ethernet-trd/2021.1/build/html/index.html>
+   Master (2021.2) <https://xilinx.github.io/vck190-ethernet-trd/2021.2/build/html/index.html>
 
    versions
