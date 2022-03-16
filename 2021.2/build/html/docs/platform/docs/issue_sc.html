@@ -57,21 +57,11 @@ function OptanonWrapper() { }
     <script type="text/javascript" src="../../../_static/js/header-footer.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../../',
-              VERSION:'2021.1-2.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -371,18 +361,18 @@ If customer uses “Set Boot Frequency” clock option from BoardUI, system-cont
 are trying to access the I2C bus at the same time. Due to contention Versal MRMAC/PTP driver fails to register.</p>
 <p>Solution: As a workaround to solve above mentioned issue, increased boot_delay in u-boot to 15sec, which increases the overall TRD application boot time.</p>
 <p>If customer does not use “Set Boot Frequency” option from BoardUI, to reduce boot-delay back to default value, please follow below steps:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="n">Run</span> <span class="n">below</span> <span class="n">command</span> <span class="n">to</span> <span class="n">get</span> <span class="n">u</span><span class="o">-</span><span class="n">boot</span> <span class="n">options</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="n">Run</span> <span class="n">below</span> <span class="n">command</span> <span class="n">to</span> <span class="n">get</span> <span class="n">u</span><span class="o">-</span><span class="n">boot</span> <span class="n">options</span> 
 <span class="n">petalinux</span><span class="o">-</span><span class="n">config</span> <span class="o">-</span><span class="n">c</span> <span class="n">u</span><span class="o">-</span><span class="n">boot</span>
 
 <span class="mf">2.</span> <span class="n">Select</span> <span class="s2">&quot;Boot options&quot;</span> <span class="k">as</span> <span class="n">shown</span> <span class="ow">in</span> <span class="n">figure</span> <span class="n">below</span>
 </pre></div>
 </div>
 <p><img alt="uboot_boot_options" src="../../../_images/uboot_boot_options.PNG" /></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">3.</span> <span class="n">Select</span> <span class="s2">&quot;Autoboot options&quot;</span> <span class="k">as</span> <span class="n">shown</span> <span class="ow">in</span> <span class="n">figure</span> <span class="n">below</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">3.</span> <span class="n">Select</span> <span class="s2">&quot;Autoboot options&quot;</span> <span class="k">as</span> <span class="n">shown</span> <span class="ow">in</span> <span class="n">figure</span> <span class="n">below</span>
 </pre></div>
 </div>
 <p><img alt="Auto_boot_option" src="../../../_images/Auto_boot_option.PNG" /></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">4.</span> <span class="n">Change</span> <span class="n">delay</span> <span class="kn">from</span> <span class="mi">15</span><span class="n">sec</span> <span class="n">to</span> <span class="n">default</span> <span class="n">value</span><span class="p">(</span><span class="mi">5</span> <span class="n">sec</span><span class="s1">&#39;s), as shown in figure below</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">4.</span> <span class="n">Change</span> <span class="n">delay</span> <span class="kn">from</span> <span class="mi">15</span><span class="n">sec</span> <span class="n">to</span> <span class="n">default</span> <span class="n">value</span><span class="p">(</span><span class="mi">5</span> <span class="n">sec</span><span class="s1">&#39;s), as shown in figure below</span>
 </pre></div>
 </div>
 <p><img alt="uboot_delay" src="../../../_images/uboot_delay.PNG" /></p>
@@ -428,7 +418,7 @@ If timestamp is not obtained within the specified wait time then PTP application
   <div role="contentinfo" class="copyright">
     <p class="footerinfo">
       <span class="lastupdated">
-        Last updated on March 02, 2022.
+        Last updated on March 16, 2022.
       </span>
 
     </p>

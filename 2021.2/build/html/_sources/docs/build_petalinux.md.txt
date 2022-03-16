@@ -21,7 +21,7 @@ bootable Linux image for the VCK190 Evaluation Board.
 In the follwing sections, you will:
 
 1. Build the BSP with the default rootfs configuration.
-2. Learn how to add your own Vivado or Vitis generated bitstream/xclbin firmware
+2. Learn how to add your own Vivado or Vitis generated bitstream firmware
    components.
 
 Prerequisites
@@ -33,9 +33,9 @@ Accessing the Tutorial Reference Files
 
 > **Note**: Skip the following steps if the design files have already been cloned and extracted to a working repository
 
-1. Clone the TRD package from the github
+1. Download the [2021.2](https://www.xilinx.com/member/forms/download/trd-license-versal.html?filename=vck190-ethernet-trd-2021.2.zip) TRD petalinux source files 
    
-2. Navigate to the `vck190-ethernet-trd` which is the working directory.
+2. Navigate to the `xilinx-vck190-trd` which is the working directory.
 
 
 To Build Designs and Petalinux in one step:
@@ -46,7 +46,12 @@ To Build Designs and Petalinux in one step:
 ```
 cd $working_dir/
 ``` 
-2   To build and  generate sdcard image (wic), run the following command. The Makefile calls a lower level Makefile to build petalinux. If a platform is not already available it builds and integrate overlay as well.
+
+Note: The xilinx-vck190-trd directory inside petalinux directory must have the .petalinux folder to build petalinux.
+
+User needs to copy the .petalinux folder from the [default vck190 production bsp](https://www.xilinx.com/member/vck190_headstart.html) petalinux project.
+
+2.	To build and  generate sdcard image (wic), run the following command. The Makefile calls a lower level Makefile to build petalinux. If a platform is not already available, it builds it.
 ```
 make sdcard YES=1
 

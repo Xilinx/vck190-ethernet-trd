@@ -57,21 +57,11 @@ function OptanonWrapper() { }
     <script type="text/javascript" src="../_static/js/header-footer.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'2021.1-2.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -391,14 +381,14 @@ function OptanonWrapper() { }
 <div><strong>Note</strong>: Skip the following steps if the design files have already been cloned and extracted to a working repository</div></blockquote>
 <ol class="simple">
 <li>Clone the TRD package from the github.</li>
-<li>Navigate to the <code class="docutils literal"><span class="pre">vck190-ethernet-trd</span></code> which is the working directory.</li>
+<li>Navigate to the <code class="docutils literal notranslate"><span class="pre">vck190-ethernet-trd</span></code> which is the working directory.</li>
 </ol>
 </div>
 <div class="section" id="generating-an-xsa">
 <h2>Generating an XSA<a class="headerlink" href="#generating-an-xsa" title="Permalink to this headline">¶</a></h2>
 <ol>
 <li><p class="first">Go to the platform directory specific to the application</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>cd $working_dir/vivado/vck190_ethernet_platform
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd $working_dir/vivado/vck190_ethernet_platform
 </pre></div>
 </div>
 <p>Applications and their corresponding platform names are listed in the table below</p>
@@ -419,12 +409,12 @@ function OptanonWrapper() { }
 </tbody>
 </table><ol>
 <li><p class="first">To build the XSA, Source Vivado and run the following command. The Makefile uses scripts/main.tcl file to create a Vivado project, populate the block design and finally build a XSA. The XSA generation may take couple of hours depending on the system specification</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">xsa</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">xsa</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">The generated XSA will be located at:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$working_dir/vivado/vck190_ethernet_platform/project/mrmac_subsys_wrapper.xsa
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$working_dir/vivado/vck190_ethernet_platform/project/mrmac_subsys_wrapper.xsa
 </pre></div>
 </div>
 </li>
@@ -432,9 +422,9 @@ function OptanonWrapper() { }
 <blockquote>
 <div><strong>Note</strong>: Steps to generate xsa from top make file:</div></blockquote>
 <ol class="simple">
-<li>Navigate to the <code class="docutils literal"><span class="pre">vck190-ethernet-trd</span></code> which is the working directory</li>
+<li>Navigate to the <code class="docutils literal notranslate"><span class="pre">vck190-ethernet-trd</span></code> which is the working directory</li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="n">make</span> <span class="n">vivado_design</span> <span class="n">design</span><span class="o">=&lt;</span><span class="n">Platform</span> <span class="n">name</span><span class="o">&gt;</span> <span class="n">JOBS</span><span class="o">=&lt;</span><span class="n">n</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">make</span> <span class="n">vivado_design</span> <span class="n">design</span><span class="o">=&lt;</span><span class="n">Platform</span> <span class="n">name</span><span class="o">&gt;</span> <span class="n">JOBS</span><span class="o">=&lt;</span><span class="n">n</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -444,12 +434,12 @@ function OptanonWrapper() { }
 <div><strong>Note</strong>: The steps below are optional and are required only if you need to change the platform design.</div></blockquote>
 <ol>
 <li><p class="first">Go to the directory specific to the platform design</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>cd $working_dir/vivado/vck190_ethernet_platform/
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd $working_dir/vivado/vck190_ethernet_platform/
 </pre></div>
 </div>
 </li>
 <li><p class="first">To open the Vivado project, first open the Vivado GUI, then run the following command from the Vivado tcl console:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">open_project</span> <span class="o">./</span><span class="n">project</span><span class="o">/</span><span class="n">mrmac_subsys</span><span class="o">.</span><span class="n">xpr</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">open_project</span> <span class="o">./</span><span class="n">project</span><span class="o">/</span><span class="n">mrmac_subsys</span><span class="o">.</span><span class="n">xpr</span>
 </pre></div>
 </div>
 </li>
@@ -463,13 +453,13 @@ function OptanonWrapper() { }
 <li>From the Vivado toolbar, select File → Export→ Export Hardware.</li>
 </ol>
 <p>The Export Hardware dialog box opens.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Choose</span> <span class="n">Include</span> <span class="n">device</span> <span class="n">image</span> <span class="ow">and</span> <span class="n">click</span> <span class="n">Next</span><span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Choose</span> <span class="n">Include</span> <span class="n">device</span> <span class="n">image</span> <span class="ow">and</span> <span class="n">click</span> <span class="n">Next</span><span class="o">.</span>
 
 <span class="n">Provide</span> <span class="n">the</span> <span class="n">name</span> <span class="k">for</span> <span class="n">the</span> <span class="n">exported</span> <span class="n">file</span> <span class="k">as</span> <span class="n">mrmac_subsys_wrapper</span> <span class="ow">and</span> <span class="n">use</span> <span class="n">the</span> <span class="n">default</span> <span class="n">location</span> <span class="n">to</span> <span class="n">save</span> <span class="n">the</span> <span class="n">file</span><span class="o">.</span> <span class="n">Click</span> <span class="n">Next</span><span class="o">.</span>
 </pre></div>
 </div>
 <p>A warning message appears if a Hardware Module has already been exported. Click Yes to overwrite the existing XSA file, if the overwrite message is displayed.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Click</span> <span class="n">Finish</span><span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Click</span> <span class="n">Finish</span><span class="o">.</span>
 </pre></div>
 </div>
 </div>
@@ -522,7 +512,7 @@ function OptanonWrapper() { }
   <div role="contentinfo" class="copyright">
     <p class="footerinfo">
       <span class="lastupdated">
-        Last updated on March 02, 2022.
+        Last updated on March 16, 2022.
       </span>
 
     </p>

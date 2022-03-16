@@ -57,21 +57,11 @@ function OptanonWrapper() { }
     <script type="text/javascript" src="../_static/js/header-footer.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'2021.1-2.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -381,7 +371,7 @@ bootable Linux image for the VCK190 Evaluation Board.</p>
 <p>In the follwing sections, you will:</p>
 <ol class="simple">
 <li>Build the BSP with the default rootfs configuration.</li>
-<li>Learn how to add your own Vivado or Vitis generated bitstream/xclbin firmware
+<li>Learn how to add your own Vivado or Vitis generated bitstream firmware
 components.</li>
 </ol>
 </div>
@@ -396,8 +386,8 @@ components.</li>
 <blockquote>
 <div><strong>Note</strong>: Skip the following steps if the design files have already been cloned and extracted to a working repository</div></blockquote>
 <ol class="simple">
-<li>Clone the TRD package from the github</li>
-<li>Navigate to the <code class="docutils literal"><span class="pre">vck190-ethernet-trd</span></code> which is the working directory.</li>
+<li>Download the <a class="reference external" href="https://www.xilinx.com/member/forms/download/trd-license-versal.html?filename=vck190-ethernet-trd-2021.2.zip">2021.2</a> TRD petalinux source files</li>
+<li>Navigate to the <code class="docutils literal notranslate"><span class="pre">xilinx-vck190-trd</span></code> which is the working directory.</li>
 </ol>
 </div>
 <div class="section" id="to-build-designs-and-petalinux-in-one-step">
@@ -405,18 +395,22 @@ components.</li>
 <ol class="simple">
 <li>Go to the working directory</li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span>cd $working_dir/
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd $working_dir/
 </pre></div>
 </div>
-<p>2   To build and  generate sdcard image (wic), run the following command. The Makefile calls a lower level Makefile to build petalinux. If a platform is not already available it builds and integrate overlay as well.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">sdcard</span> <span class="n">YES</span><span class="o">=</span><span class="mi">1</span>
+<p>Note: The xilinx-vck190-trd directory inside petalinux directory must have the .petalinux folder to build petalinux.</p>
+<p>User needs to copy the .petalinux folder from the <a class="reference external" href="https://www.xilinx.com/member/vck190_headstart.html">default vck190 production bsp</a> petalinux project.</p>
+<ol class="simple">
+<li>To build and  generate sdcard image (wic), run the following command. The Makefile calls a lower level Makefile to build petalinux. If a platform is not already available, it builds it.</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">sdcard</span> <span class="n">YES</span><span class="o">=</span><span class="mi">1</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="modifying-configure-the-petalinux-project-manually">
 <h2>Modifying/Configure the petalinux project manually<a class="headerlink" href="#modifying-configure-the-petalinux-project-manually" title="Permalink to this headline">¶</a></h2>
 <p>The project needs to be configured with the xsa file from the Vivado project.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">petalinux</span><span class="o">-</span><span class="n">config</span> <span class="o">--</span><span class="n">get</span><span class="o">-</span><span class="n">hw</span><span class="o">-</span><span class="n">description</span><span class="o">=&lt;</span><span class="n">path</span> <span class="n">of</span> <span class="n">xsa</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">silentconfig</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">petalinux</span><span class="o">-</span><span class="n">config</span> <span class="o">--</span><span class="n">get</span><span class="o">-</span><span class="n">hw</span><span class="o">-</span><span class="n">description</span><span class="o">=&lt;</span><span class="n">path</span> <span class="n">of</span> <span class="n">xsa</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">silentconfig</span>
 </pre></div>
 </div>
 <blockquote>
@@ -425,23 +419,23 @@ components.</li>
 <div class="section" id="build-the-image">
 <h2>Build the Image<a class="headerlink" href="#build-the-image" title="Permalink to this headline">¶</a></h2>
 <p>Run the below commands to build and package the wic image in compressed format:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">petalinux</span><span class="o">-</span><span class="n">build</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">petalinux</span><span class="o">-</span><span class="n">build</span>
 <span class="n">petalinux</span><span class="o">-</span><span class="n">package</span> <span class="o">--</span><span class="n">wic</span> <span class="o">--</span><span class="n">wic</span><span class="o">-</span><span class="n">extra</span><span class="o">-</span><span class="n">args</span> <span class="s2">&quot;-c xz&quot;</span>
 </pre></div>
 </div>
 <blockquote>
 <div><strong>Note</strong> : Before running above command copy binary_container_1.xclbin into images/linux folder.</div></blockquote>
 <p>The generated compressed image file will be located at
-<code class="docutils literal"><span class="pre">images/linux/petalinux-sdimage.wic.xz</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">images/linux/petalinux-sdimage.wic.xz</span></code>.</p>
 <p><strong>Tip:</strong> The generated wic file assumes a fixed partition size.
 The file size can be significantly lower by compressing the file e.g.
 using xz:</p>
 <p>To uncompress wic file use following command</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">xz</span> <span class="o">-</span><span class="n">d</span> <span class="o">-</span><span class="n">v</span> <span class="n">images</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">petalinux</span><span class="o">-</span><span class="n">sdimage</span><span class="o">.</span><span class="n">wic</span><span class="o">.</span><span class="n">xz</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xz</span> <span class="o">-</span><span class="n">d</span> <span class="o">-</span><span class="n">v</span> <span class="n">images</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">petalinux</span><span class="o">-</span><span class="n">sdimage</span><span class="o">.</span><span class="n">wic</span><span class="o">.</span><span class="n">xz</span>
 </pre></div>
 </div>
 <p>This generates a output file named
-<code class="docutils literal"><span class="pre">images/linux/petalinux-sdimage.wic</span></code> with uncompressed wic file</p>
+<code class="docutils literal notranslate"><span class="pre">images/linux/petalinux-sdimage.wic</span></code> with uncompressed wic file</p>
 <p>Flash the image on an SD card using Balena Etcher. This image is functionally
 equivalent to the prebuilt sdcard image provided with package</p>
 </div>
@@ -451,22 +445,22 @@ equivalent to the prebuilt sdcard image provided with package</p>
 for a specific target architecture e.g. X86 host and ARM 64-bit target. Run the
 below command to generate a cross-compilation that can be used outside the
 PetaLinux:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">petalinux</span><span class="o">-</span><span class="n">build</span> <span class="o">-</span><span class="n">s</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">petalinux</span><span class="o">-</span><span class="n">build</span> <span class="o">-</span><span class="n">s</span>
 </pre></div>
 </div>
 <p>The resulting self-extracting shell script installer file is located at
-<code class="docutils literal"><span class="pre">images/linux/sdk.sh</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">images/linux/sdk.sh</span></code>.</p>
 <p>The SDK installer script can be copied to the application developer’s host
 machine and installed by simply running the script. Follow the prompts on the
 screen.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ images/linux/sdk.sh
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ images/linux/sdk.sh
 PetaLinux SDK installer version  2021.2
 ============================================
 Enter target directory for SDK (default: /opt/petalinux/ 2021.2): ./images/linux/sdk
 </pre></div>
 </div>
 <p>Once the SDK is installed, source the file
-<code class="docutils literal"><span class="pre">images/linux/sdk/environment-setup-aarch64-xilinx-linux</span></code>
+<code class="docutils literal notranslate"><span class="pre">images/linux/sdk/environment-setup-aarch64-xilinx-linux</span></code>
 to set up the cross-development environment.</p>
 <p><strong>Next Step</strong></p>
 <ul class="simple">
@@ -514,7 +508,7 @@ to set up the cross-development environment.</p>
   <div role="contentinfo" class="copyright">
     <p class="footerinfo">
       <span class="lastupdated">
-        Last updated on March 02, 2022.
+        Last updated on March 16, 2022.
       </span>
 
     </p>
