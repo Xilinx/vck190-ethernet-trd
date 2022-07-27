@@ -36,7 +36,7 @@ To generate licenses and sources for a Petalinux BSP use following command.
 ``petalinux-build -a``
 
 
-To obtain  Xilinx image.ub  license files:
+To obtain  Xilinx image.ub license files:
 
 Licenses for image.ub files are included in the ``/usr/share/licenses`` directory when the image file is built.
 The DNF package manager can be used to list all packages in the image, as well as download sources for all packages.
