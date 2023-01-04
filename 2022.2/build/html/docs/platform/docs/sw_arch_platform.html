@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+  <title>Software Architecture of the Platform &mdash; VCK190 Ethernet TRD 2022.1 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Hardware Architecture of the Platform" href="hw_arch_platform.html" />
+    <link rel="prev" title="TRD Package" href="../../build_vivado_design.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../../../index.html" class="icon icon-home"> VCK190 Ethernet TRD
+            <img src="../../../_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../platform_landing.html">Ethernet TRD</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#features">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#quick-start">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#tutorials">Tutorials</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../platform_landing.html#architecture-documents">Architecture Documents</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Software Architecture of the Platform</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#timestamp-handling-for-pl-based-ptp-packet-processing-solution">Timestamp Handling for PL based PTP Packet Processing solution</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="hw_arch_platform.html">Hardware Architecture of the Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hw_arch_ptp_pkt_proc.html">Hardware Acchitecture of the PTP Packet Processor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#others">Others</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#xilinx-support">Xilinx Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#license">License</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2022.2/build/html/index.html">Master (2022.2)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2021.1/build/html/index.html">2021.1</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">VCK190 Ethernet TRD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../platform_landing.html">Ethernet TRD</a> &raquo;</li>
+      <li>Software Architecture of the Platform</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/docs/platform/docs/sw_arch_platform.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <table class="sphinxhide">
+ <tr>
+   <td align="center"><img src="../../media/xilinx-logo.png" width="30%"/><h1> Versal Prime -VCK190 Evaluation Kit Ethernet TRD Tutorial</h1>
+   </td>
+ </tr>
+ <tr>
+ <td align="center"><h1> Software Architecture of the Platform </h1> </td>
+ </tr>
+</table><div class="section" id="software-architecture-of-the-platform">
+<h1>Software Architecture of the Platform<a class="headerlink" href="#software-architecture-of-the-platform" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The VCK190 Ethernet platform design uses the AXI Ethernet driver present in Linux kernel to configure MRMAC and initialize four lanes to 10G ethernet rates. The driver initializes MCDMA’s S2MM and MM2S channel descriptors and enables them to transfer data to and from system memory. The driver also does interrupt handling when a packet is received or transmitted via DMA.</p>
+<p><img alt="Linux Software Stack and Vertical Domains" src="../../../_images/sw-stack.JPG" /></p>
+<p>Note: Please refer https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842485/Linux+AXI+Ethernet+driver for more details.</p>
+<ul class="simple">
+<li><p>This MRMAC driver supports 1588 functionality with Xilinx PTP  timer-syncer driver (drivers/ptp/ptp_xilinx.c).</p></li>
+<li><p>The Ethernet driver handles HW timestamps. PTP timer-syncer driver initializes the timer-syncer IP and also adjusts the same for synchronization (whe device is PTP client).</p></li>
+<li><p>This solution is supported with the standard linuxptp user space application.</p></li>
+<li><p>The TRD supports a PL based PTP packet processing solution where HW shares Transmit timestamp via DMA control stream/USR-APP fields and Receive timestamp in-band via data stream.</p></li>
+</ul>
+</div>
+<div class="section" id="timestamp-handling-for-pl-based-ptp-packet-processing-solution">
+<h2>Timestamp Handling for PL based PTP Packet Processing solution<a class="headerlink" href="#timestamp-handling-for-pl-based-ptp-packet-processing-solution" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Transmit Timestamp Handling:</p>
+<ol class="simple">
+<li><p>Software provides required metadata information as per PTP needs in USR-APP fields of the descriptor when queuing a PTP packet. This implementation chooses APP2 as the destination for Timestamps.</p></li>
+<li><p>Upon transmit completion, SW checks for PTP packets and the corresponding qualifier bit in USR-APP fields and takes necessary action, including passing the TS to higher layers.</p></li>
+</ol>
+</li>
+<li><p>Receive Timestamp Handling:</p>
+<ol class="simple">
+<li><p>SW processes received packets and checks for PTP packet qualifier bit to be set. The timestamp is then extracted from the first 16 bytes of datastream and passed to the upper layers.</p></li>
+<li><p>SW discards this dummy precursor bytes for all non-PTP packets.</p></li>
+</ol>
+</li>
+</ul>
+<p><strong>Next Steps</strong></p>
+<p>You can choose any of the following next steps:</p>
+<ul class="simple">
+<li><p>Go to the <a class="reference internal" href="app_deployment.html"><span class="doc">Application deployment page</span></a></p></li>
+<li><p>Go back to the <a class="reference internal" href="../platform_landing.html"><span class="doc">VCK190 Ethernet TRD design start page</span></a></p></li>
+<li><p>Read <a class="reference internal" href="hw_arch_ptp_pkt_proc.html"><span class="doc">Hardware Architecture of PTP Packet Processor</span></a></p></li>
+</ul>
+<p><strong>License</strong></p>
+<p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License.</p>
+<p>You may obtain a copy of the License at
+<a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
+<p align="center">Copyright&copy; 2022 Xilinx</p></div>
+</div>
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../build_vivado_design.html" class="btn btn-neutral float-left" title="TRD Package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hw_arch_platform.html" class="btn btn-neutral float-right" title="Hardware Architecture of the Platform" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022-2023, Xilinx, Inc. Xilinx is now a part of AMD.
+      <span class="lastupdated">Last updated on January 03, 2023.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="https://pages.gitenterprise.xilinx.com/techdocs/Test/vvas/build/html/index.html#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>
