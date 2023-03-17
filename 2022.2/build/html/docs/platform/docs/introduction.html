@@ -22,6 +22,7 @@ function OptanonWrapper() { }
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -64,6 +65,8 @@ function OptanonWrapper() { }
 <li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#tutorials">Tutorials</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#architecture-documents">Architecture Documents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#others">Others</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#ptp-1588-phase-synronization">PTP 1588 Phase Synronization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#porting-the-trd-package-to-vmk180-board">Porting the TRD package to VMK180 Board</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#xilinx-support">Xilinx Support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#license">License</a></li>
 </ul>
@@ -111,14 +114,14 @@ function OptanonWrapper() { }
  <td align="center"><h1> Design Overview </h1> </td>
  </tr>
 </table><div class="section" id="design-overview">
-<h1>Design Overview<a class="headerlink" href="#design-overview" title="Permalink to this headline">¶</a></h1>
+<h1>Design Overview<a class="headerlink" href="#design-overview" title="Permalink to this heading">¶</a></h1>
 <div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>The Ethernet platform is designed to support a Versal VCK190 board for showcasing the MRMAC IP as a peripheral and PL based Precision Time Protocol (PTP) solution for PTP packet processing. It consists of MRMAC with 4 lanes enabled, each can be configured to support 10G/25G. Each lane of the MRMAC IP is interfaced to one TX and RX channel of an independent MCDMA. The ACAP hardware that is supported on the Versal platform has the following features:</p>
 <p>It contains the Quad base GT in Programmable Logic (PL) to accommodate the movement of Ethernet packets. The output of the GTY is connected to the external NIC through a QSFP to SFP cable. The ethernet data packets are transferred using MRMAC via GT interface.</p>
 </div>
 <div class="section" id="design-components">
-<h2>Design Components<a class="headerlink" href="#design-components" title="Permalink to this headline">¶</a></h2>
+<h2>Design Components<a class="headerlink" href="#design-components" title="Permalink to this heading">¶</a></h2>
 <details>
  <summary><b>Hardware components<ul class="simple">
 <li><p>VCK190 Evaluation Kit</p></li>
@@ -216,7 +219,7 @@ function OptanonWrapper() { }
 
   <div role="contentinfo">
     <p>&#169; Copyright 2022-2023, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on January 03, 2023.
+      <span class="lastupdated">Last updated on March 15, 2023.
       </span></p>
   </div>
 

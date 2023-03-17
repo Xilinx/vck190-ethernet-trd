@@ -22,6 +22,7 @@ function OptanonWrapper() { }
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -65,6 +66,8 @@ function OptanonWrapper() { }
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#others">Others</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#ptp-1588-phase-synronization">PTP 1588 Phase Synronization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#porting-the-trd-package-to-vmk180-board">Porting the TRD package to VMK180 Board</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#xilinx-support">Xilinx Support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#license">License</a></li>
 </ul>
@@ -112,9 +115,9 @@ function OptanonWrapper() { }
  <td align="center"><h1> Hardware Architecture of the PTP Packet Processor </h1> </td>
  </tr>
 </table><div class="section" id="hardware-acchitecture-of-the-ptp-packet-processor">
-<h1>Hardware Acchitecture of the PTP Packet Processor<a class="headerlink" href="#hardware-acchitecture-of-the-ptp-packet-processor" title="Permalink to this headline">¶</a></h1>
+<h1>Hardware Acchitecture of the PTP Packet Processor<a class="headerlink" href="#hardware-acchitecture-of-the-ptp-packet-processor" title="Permalink to this heading">¶</a></h1>
 <div class="section" id="ptp-tx-hw-master-ip">
-<h2>PTP Tx HW MASTER IP<a class="headerlink" href="#ptp-tx-hw-master-ip" title="Permalink to this headline">¶</a></h2>
+<h2>PTP Tx HW MASTER IP<a class="headerlink" href="#ptp-tx-hw-master-ip" title="Permalink to this heading">¶</a></h2>
 <p>The PTP HW Master receives the necessary information from the USER-APP fields of the AXI MCDMA for capturing timestamp and storing it in memory for the Transmitted PTP packets. The address of the memory where the timestamp needs to be stored is provided by the USER-APP fields of AXI MCDMA Control stream.
 The SW provides a 2-bit PTP flag. Based on the value of the Flag bits, the PTP HW Master drives the tx_ptp_1588op_in [1:0] interface of MRMAC.
 MRMAC performs the PTP operation based on the 2 bit value of tx_ptp_1588op_in[1:0] as given in below table:</p>
@@ -173,7 +176,7 @@ The command received from the MCDMA control stream is transmitted to the one ste
 <p>• For more details on the checksum and correction factor port description and operation, please refer to PG314- Versal Devices Integrated 100G Multirate Ethernet MAC Subsystem v1.3 (<a href="https://docs.xilinx.com/r/1.3-English/pg314-versal-mrmac/Introduction"> PG314 </a>)</p>
 </div>
 <div class="section" id="rx-ptp-packet-detect-logic-ip">
-<h2>Rx PTP PACKET DETECT LOGIC IP<a class="headerlink" href="#rx-ptp-packet-detect-logic-ip" title="Permalink to this headline">¶</a></h2>
+<h2>Rx PTP PACKET DETECT LOGIC IP<a class="headerlink" href="#rx-ptp-packet-detect-logic-ip" title="Permalink to this heading">¶</a></h2>
 <p>PTP Packet Detection IP parses all the received Packets.</p>
 <p>o When a PTP packet is received, it parses the Header and sets a PTP Qualifier bit (i) when a PTP packet is detected, that helps the PTP application in upper layer for further processing.</p>
 <p>o An additional Qualifier bit is set, when a Peer-to-Peer PTP packet(ii) is detected.</p>
@@ -242,7 +245,7 @@ The command received from the MCDMA control stream is transmitted to the one ste
 
   <div role="contentinfo">
     <p>&#169; Copyright 2022-2023, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on January 03, 2023.
+      <span class="lastupdated">Last updated on March 15, 2023.
       </span></p>
   </div>
 

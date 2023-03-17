@@ -22,6 +22,7 @@ function OptanonWrapper() { }
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -74,6 +75,8 @@ function OptanonWrapper() { }
 </li>
 <li class="toctree-l2"><a class="reference internal" href="platform/platform_landing.html#architecture-documents">Architecture Documents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="platform/platform_landing.html#others">Others</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform/platform_landing.html#ptp-1588-phase-synronization">PTP 1588 Phase Synronization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform/platform_landing.html#porting-the-trd-package-to-vmk180-board">Porting the TRD package to VMK180 Board</a></li>
 <li class="toctree-l2"><a class="reference internal" href="platform/platform_landing.html#xilinx-support">Xilinx Support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="platform/platform_landing.html#license">License</a></li>
 </ul>
@@ -121,19 +124,19 @@ function OptanonWrapper() { }
  <td align="center"><h1>Using Vivado to Build the Hardware Design</h1> </td>
  </tr>
 </table><div class="section" id="trd-package">
-<h1>TRD Package<a class="headerlink" href="#trd-package" title="Permalink to this headline">¶</a></h1>
+<h1>TRD Package<a class="headerlink" href="#trd-package" title="Permalink to this heading">¶</a></h1>
 <div class="section" id="accessing-the-tutorial-reference-files">
-<h2>Accessing the Tutorial Reference Files<a class="headerlink" href="#accessing-the-tutorial-reference-files" title="Permalink to this headline">¶</a></h2>
+<h2>Accessing the Tutorial Reference Files<a class="headerlink" href="#accessing-the-tutorial-reference-files" title="Permalink to this heading">¶</a></h2>
 <!--- >**Note**: Skip the following steps if the design files have already been cloned and extracted to a working repository ---><ol class="simple">
-<li><p>Download the TRD package from <a href="https://www.xilinx.com/member/forms/download/design-license-xef.html?filename=vck190_ethernet_trd_2022_1.zip">Source Files </a> .</p></li>
+<li><p>Download the TRD package from <a href="https://www.xilinx.com/member/forms/download/design-license-xef.html?filename=vck190-ethernet-trd_2022.2.zip">Source Files </a> .</p></li>
 <li><p>Unzip the TRD package.</p></li>
 <li><p>Navigate to the <code class="docutils literal notranslate"><span class="pre">../vck190-ethernet-trd-2022.2</span></code> which is the working directory.</p></li>
 </ol>
 </div>
 <div class="section" id="trd-package-file-structure">
-<h2>TRD package File Structure:<a class="headerlink" href="#trd-package-file-structure" title="Permalink to this headline">¶</a></h2>
+<h2>TRD package File Structure:<a class="headerlink" href="#trd-package-file-structure" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
-<li><p>The TRP package file hierarchy is shown in the below snapshot.</p></li>
+<li><p>The TRD package file hierarchy is shown in the below snapshot.</p></li>
 </ul>
 <p><img alt="trd_package" src="../_images/vck_190_file_hier.PNG" /></p>
 <p>The TRD package contains:</p>
@@ -146,17 +149,17 @@ function OptanonWrapper() { }
 </div>
 </div>
 <div class="section" id="build-flow">
-<h1>Build Flow<a class="headerlink" href="#build-flow" title="Permalink to this headline">¶</a></h1>
+<h1>Build Flow<a class="headerlink" href="#build-flow" title="Permalink to this heading">¶</a></h1>
 <p>This tutorial shows how to build the TRD package.</p>
 <div class="section" id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Vivado Design Suite 2022.2</p></li>
 <li><p>PetaLinux 2022.2 tools</p></li>
 </ul>
 </div>
 <div class="section" id="to-build-the-trd-package-with-the-top-makefile">
-<h2>To Build the TRD Package with the top Makefile:<a class="headerlink" href="#to-build-the-trd-package-with-the-top-makefile" title="Permalink to this headline">¶</a></h2>
+<h2>To Build the TRD Package with the top Makefile:<a class="headerlink" href="#to-build-the-trd-package-with-the-top-makefile" title="Permalink to this heading">¶</a></h2>
 <p>Running the <code class="docutils literal notranslate"><span class="pre">../vck190-ethernet-trd-2022.2/Makefile</span></code> will generate the hardware platform XSA and subsequently the petalinux images.</p>
 <ol>
 <li><p>Go to the working directory</p>
@@ -172,7 +175,7 @@ function OptanonWrapper() { }
 </ol>
 </div>
 <div class="section" id="to-build-the-hardware-platform-xsa">
-<h2>To Build the Hardware Platform XSA:<a class="headerlink" href="#to-build-the-hardware-platform-xsa" title="Permalink to this headline">¶</a></h2>
+<h2>To Build the Hardware Platform XSA:<a class="headerlink" href="#to-build-the-hardware-platform-xsa" title="Permalink to this heading">¶</a></h2>
 <p>This tutorial shows how to build XSA alone using the makefiles</p>
 <ul class="simple">
 <li><p>Generate XSA using <code class="docutils literal notranslate"><span class="pre">../vck190-ethernet-trd-2022.2/vivado/Makefile</span></code></p></li>
@@ -205,7 +208,7 @@ function OptanonWrapper() { }
 </div>
 </div>
 <div class="section" id="modifying-the-design-and-creating-a-new-xsa">
-<h2>Modifying the design and creating a new XSA<a class="headerlink" href="#modifying-the-design-and-creating-a-new-xsa" title="Permalink to this headline">¶</a></h2>
+<h2>Modifying the design and creating a new XSA<a class="headerlink" href="#modifying-the-design-and-creating-a-new-xsa" title="Permalink to this heading">¶</a></h2>
 <blockquote>
 <div><p><strong>Note</strong>: The steps below are optional and are required only if you need to change the platform design.</p>
 </div></blockquote>
@@ -237,11 +240,11 @@ function OptanonWrapper() { }
 </ol>
 </div>
 <div class="section" id="to-build-the-petalinux-images">
-<h2>To Build the Petalinux Images:<a class="headerlink" href="#to-build-the-petalinux-images" title="Permalink to this headline">¶</a></h2>
+<h2>To Build the Petalinux Images:<a class="headerlink" href="#to-build-the-petalinux-images" title="Permalink to this heading">¶</a></h2>
 <p>In the following sections, the steps to build petalinux images are given.</p>
 </div>
 <div class="section" id="configure-the-petalinux-project-manually">
-<h2>Configure the petalinux project manually<a class="headerlink" href="#configure-the-petalinux-project-manually" title="Permalink to this headline">¶</a></h2>
+<h2>Configure the petalinux project manually<a class="headerlink" href="#configure-the-petalinux-project-manually" title="Permalink to this heading">¶</a></h2>
 <p>The project needs to be configured with the xsa file from the Vivado project.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">petalinux</span><span class="o">-</span><span class="n">config</span> <span class="o">--</span><span class="n">get</span><span class="o">-</span><span class="n">hw</span><span class="o">-</span><span class="n">description</span><span class="o">=&lt;</span><span class="n">path</span> <span class="n">of</span> <span class="n">xsa</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">silentconfig</span>
 </pre></div>
@@ -251,7 +254,7 @@ function OptanonWrapper() { }
 </div></blockquote>
 </div>
 <div class="section" id="build-the-image">
-<h2>Build the Image<a class="headerlink" href="#build-the-image" title="Permalink to this headline">¶</a></h2>
+<h2>Build the Image<a class="headerlink" href="#build-the-image" title="Permalink to this heading">¶</a></h2>
 <p>Run the below commands to build and package the wic image in compressed format:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">petalinux</span><span class="o">-</span><span class="n">build</span>
 <span class="n">petalinux</span><span class="o">-</span><span class="n">package</span> <span class="o">--</span><span class="n">wic</span> <span class="o">--</span><span class="n">wic</span><span class="o">-</span><span class="n">extra</span><span class="o">-</span><span class="n">args</span> <span class="s2">&quot;-c xz&quot;</span>
@@ -271,14 +274,14 @@ using xz:</p>
 <p>Flash the image on an SD card using Balena Etcher. This image is functionally
 equivalent to the prebuilt sdcard image provided with package</p>
 <div class="section" id="next-steps">
-<h3>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h3>
+<h3>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference internal" href="platform/docs/app_deployment.html"><span class="doc">Setting up the Board and Application Deployment</span></a></p></li>
 <li><p>Go back to the <a class="reference internal" href="platform/docs/introduction.html"><span class="doc">VCK190 Targeted Reference Designs start page</span></a></p></li>
 </ul>
 </div>
 <div class="section" id="references">
-<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<h3>References<a class="headerlink" href="#references" title="Permalink to this heading">¶</a></h3>
 <p>For more information on how to setup Platform Interfaces refer to Xilinx Vitis Unified Software Platform Documentation <a class="reference external" href="https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug1393-vitis-application-acceleration.pdf">UG1393</a></p>
 <ul class="simple">
 <li><p>Petalinux user guide <a class="reference external" href="https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug1144-petalinux-tools-reference-guide.pdf">UG1144</a></p></li>
@@ -286,7 +289,7 @@ equivalent to the prebuilt sdcard image provided with package</p>
 </div>
 </div>
 <div class="section" id="license">
-<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<h2>License<a class="headerlink" href="#license" title="Permalink to this heading">¶</a></h2>
 <p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License.</p>
 <p>You may obtain a copy of the License at
 <a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
@@ -316,7 +319,7 @@ equivalent to the prebuilt sdcard image provided with package</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2022-2023, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on January 03, 2023.
+      <span class="lastupdated">Last updated on March 15, 2023.
       </span></p>
   </div>
 

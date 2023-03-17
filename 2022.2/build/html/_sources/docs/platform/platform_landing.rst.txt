@@ -29,7 +29,7 @@ Quick Start
 
    docs/introduction.md
    docs/app_deployment.md
-   
+      
 
 Tutorials
 ---------
@@ -38,8 +38,6 @@ Tutorials
   
 
    ../build_vivado_design.md
-   
-
 
 Architecture Documents
 ----------------------
@@ -63,7 +61,20 @@ Others
    docs/issue_sc.md
    docs/revision_history.md
 
+PTP 1588 Phase Synronization
+------------------------------
+.. toctree::
+   :maxdepth: 1
+   
+   docs/phase_sync_deployment.md
 
+Porting the TRD package to VMK180 Board
+----------------------------------------
+.. toctree::
+   :maxdepth: 1
+   
+   docs/vmk_180_porting.md
+   
 Xilinx Support
 ---------------
 

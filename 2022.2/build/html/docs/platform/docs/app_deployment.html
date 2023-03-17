@@ -22,6 +22,7 @@ function OptanonWrapper() { }
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -67,6 +68,8 @@ function OptanonWrapper() { }
 <li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#tutorials">Tutorials</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#architecture-documents">Architecture Documents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#others">Others</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#ptp-1588-phase-synronization">PTP 1588 Phase Synronization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#porting-the-trd-package-to-vmk180-board">Porting the TRD package to VMK180 Board</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#xilinx-support">Xilinx Support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#license">License</a></li>
 </ul>
@@ -114,12 +117,12 @@ function OptanonWrapper() { }
  <td align="center"><h1> Board Setup and Application Deployment</h1> </td>
  </tr>
 </table><div class="section" id="setting-up-the-board-and-application-deployment">
-<h1>Setting up the Board and Application Deployment<a class="headerlink" href="#setting-up-the-board-and-application-deployment" title="Permalink to this headline">¶</a></h1>
+<h1>Setting up the Board and Application Deployment<a class="headerlink" href="#setting-up-the-board-and-application-deployment" title="Permalink to this heading">¶</a></h1>
 <div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>This document shows how to set up the board and run the Ethernet TRD application with prebuilt images.</p>
 <div class="section" id="prerequisites">
-<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h3>
+<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">¶</a></h3>
 <ul>
 <li><p>Reference design <code class="docutils literal notranslate"><span class="pre">vck190_ethernet_trd_prebuilt_2022.2.zip</span></code> file</p></li>
 <li><p>VCK190 Evaluation Board</p></li>
@@ -135,7 +138,7 @@ function OptanonWrapper() { }
 </ul>
 </div>
 <div class="section" id="board-setup">
-<h3>Board Setup<a class="headerlink" href="#board-setup" title="Permalink to this headline">¶</a></h3>
+<h3>Board Setup<a class="headerlink" href="#board-setup" title="Permalink to this heading">¶</a></h3>
 <p>The following figure shows how to set up the VCK190 evaluation board.</p>
 <p><img alt="setup" src="../../../_images/vck190_setup.PNG" /></p>
 <p><strong>Board jumper and switch settings</strong></p>
@@ -166,7 +169,7 @@ function OptanonWrapper() { }
 </ul>
 </div>
 <div class="section" id="flash-the-sd-card">
-<h3>Flash the SD Card<a class="headerlink" href="#flash-the-sd-card" title="Permalink to this headline">¶</a></h3>
+<h3>Flash the SD Card<a class="headerlink" href="#flash-the-sd-card" title="Permalink to this heading">¶</a></h3>
 <ul>
 <li><p>Download the <a href="https://www.xilinx.com/member/forms/download/design-license-xef.html?filename=vck190_ethernet_trd_prebuilt_2022.2.zip">Pre-Built Package </a> , unzip and save it on your computer. Alternatively, go through the tutorials section to build <code class="docutils literal notranslate"><span class="pre">petalinux-sdimage.wic</span></code> locally.</p></li>
 <li><p>cd into the directory containing the compressed wic file</p>
@@ -190,7 +193,7 @@ macOS) required to flash the SD card.</p></li>
 </ul>
 </div>
 <div class="section" id="sd-card-partitions">
-<h3>SD card partitions<a class="headerlink" href="#sd-card-partitions" title="Permalink to this headline">¶</a></h3>
+<h3>SD card partitions<a class="headerlink" href="#sd-card-partitions" title="Permalink to this heading">¶</a></h3>
 <p>Once the raw image is written to the SD card, you will be able to see two partitions. In the first partition (FAT32 format) resides:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="o">*</span> <span class="n">Boot</span> <span class="n">image</span> <span class="p">(</span><span class="n">BOOT</span><span class="o">.</span><span class="n">BIN</span><span class="p">)</span>
 
@@ -207,13 +210,13 @@ macOS) required to flash the SD card.</p></li>
 </div></blockquote>
 </div>
 <div class="section" id="sd-boot-mode">
-<h3>SD Boot mode:<a class="headerlink" href="#sd-boot-mode" title="Permalink to this headline">¶</a></h3>
+<h3>SD Boot mode:<a class="headerlink" href="#sd-boot-mode" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Power on the board in SD boot mode.</p></li>
 </ul>
 </div>
 <div class="section" id="gt-reference-clocks">
-<h3>GT Reference clocks<a class="headerlink" href="#gt-reference-clocks" title="Permalink to this headline">¶</a></h3>
+<h3>GT Reference clocks<a class="headerlink" href="#gt-reference-clocks" title="Permalink to this heading">¶</a></h3>
 <p>The GT Reference clocks required for the design are configured by the IDT drivers.</p>
 <blockquote>
 <div><ul class="simple">
@@ -222,7 +225,7 @@ macOS) required to flash the SD card.</p></li>
 </div></blockquote>
 </div>
 <div class="section" id="run-host-and-vck190-applications">
-<h3>Run Host and VCK190 applications<a class="headerlink" href="#run-host-and-vck190-applications" title="Permalink to this headline">¶</a></h3>
+<h3>Run Host and VCK190 applications<a class="headerlink" href="#run-host-and-vck190-applications" title="Permalink to this heading">¶</a></h3>
 <p>Once the host and VCK190 are booted, set up an IP address for each ethernet port and make sure the Ethernet link is established using ping. Do not proceed until you are able to ping each interface.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="n">ifconfig</span> <span class="o">&lt;</span><span class="n">interface_name</span><span class="o">&gt;</span> <span class="n">down</span>	
 <span class="o">&gt;</span><span class="n">ifconfig</span> <span class="o">&lt;</span><span class="n">interface_name</span><span class="o">&gt;</span> <span class="n">up</span>
@@ -236,7 +239,7 @@ macOS) required to flash the SD card.</p></li>
 </div>
 </div>
 <div class="section" id="iperf-commands">
-<h2>Iperf Commands<a class="headerlink" href="#iperf-commands" title="Permalink to this headline">¶</a></h2>
+<h2>Iperf Commands<a class="headerlink" href="#iperf-commands" title="Permalink to this heading">¶</a></h2>
 <ul>
 <li><p>Execute the following command to start iperf3 server</p>
 <blockquote>
@@ -256,9 +259,9 @@ iperf3 -c &lt;host_interface_IP&gt; -T -u -p &lt;port_no&gt;  -t 60 -i 60</p>
 </ul>
 </div>
 <div class="section" id="ptp-commands">
-<h2>PTP commands<a class="headerlink" href="#ptp-commands" title="Permalink to this headline">¶</a></h2>
+<h2>PTP commands<a class="headerlink" href="#ptp-commands" title="Permalink to this heading">¶</a></h2>
 <div class="section" id="two-step-ptp">
-<h3>Two Step PTP<a class="headerlink" href="#two-step-ptp" title="Permalink to this headline">¶</a></h3>
+<h3>Two Step PTP<a class="headerlink" href="#two-step-ptp" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VCK190</span><span class="o">&gt;</span> <span class="n">ptp4l</span> <span class="o">-</span><span class="n">i</span> <span class="n">eth0</span> <span class="o">-</span><span class="n">m</span>
 
 <span class="n">Link</span> <span class="n">partner</span><span class="o">&gt;</span> <span class="n">ptp4l</span> <span class="o">-</span><span class="n">i</span> <span class="o">&lt;</span><span class="n">interface_name</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">m</span> <span class="o">-</span><span class="n">s</span>
@@ -268,7 +271,7 @@ iperf3 -c &lt;host_interface_IP&gt; -T -u -p &lt;port_no&gt;  -t 60 -i 60</p>
 </div>
 </div>
 <div class="section" id="one-step-ptp">
-<h3>One Step PTP<a class="headerlink" href="#one-step-ptp" title="Permalink to this headline">¶</a></h3>
+<h3>One Step PTP<a class="headerlink" href="#one-step-ptp" title="Permalink to this heading">¶</a></h3>
 <ol>
 <li><p>PTP with 1 step E2E:</p>
 <p>Link partner&gt; ptp4l -i <interface name> -m -f /usr/bin/default_onestep.cfg</p>
@@ -284,7 +287,7 @@ iperf3 -c &lt;host_interface_IP&gt; -T -u -p &lt;port_no&gt;  -t 60 -i 60</p>
 </div>
 </div>
 <div class="section" id="dynamic-switching-between-10g-25g">
-<h2>Dynamic switching between 10G &lt;-&gt; 25G<a class="headerlink" href="#dynamic-switching-between-10g-25g" title="Permalink to this headline">¶</a></h2>
+<h2>Dynamic switching between 10G &lt;-&gt; 25G<a class="headerlink" href="#dynamic-switching-between-10g-25g" title="Permalink to this heading">¶</a></h2>
 <p>Note: By default the interface links up at 25G.</p>
 <blockquote>
 <div><ul class="simple">
@@ -293,7 +296,7 @@ iperf3 -c &lt;host_interface_IP&gt; -T -u -p &lt;port_no&gt;  -t 60 -i 60</p>
 </div></blockquote>
 <p>To switch between 10G and 25G speeds dynamically use the following commands:</p>
 <div class="section" id="g-25g">
-<h3>10G -&gt; 25G:<a class="headerlink" href="#g-25g" title="Permalink to this headline">¶</a></h3>
+<h3>10G -&gt; 25G:<a class="headerlink" href="#g-25g" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="n">ifconfig</span> <span class="o">&lt;</span><span class="n">interface_name</span><span class="o">&gt;</span> <span class="n">down</span>	
 <span class="o">&gt;</span><span class="n">ethtool</span> <span class="o">-</span><span class="n">s</span> <span class="o">&lt;</span><span class="n">interface_name</span><span class="o">&gt;</span> <span class="n">speed</span> <span class="mi">25000</span>	
 <span class="o">&gt;</span><span class="n">ifconfig</span> <span class="o">&lt;</span><span class="n">interface_name</span><span class="o">&gt;</span> <span class="n">up</span>
@@ -301,7 +304,7 @@ iperf3 -c &lt;host_interface_IP&gt; -T -u -p &lt;port_no&gt;  -t 60 -i 60</p>
 </div>
 </div>
 <div class="section" id="g-10g">
-<h3>25G -&gt; 10G:<a class="headerlink" href="#g-10g" title="Permalink to this headline">¶</a></h3>
+<h3>25G -&gt; 10G:<a class="headerlink" href="#g-10g" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="n">ifconfig</span> <span class="o">&lt;</span><span class="n">interface_name</span><span class="o">&gt;</span> <span class="n">down</span>
 <span class="o">&gt;</span><span class="n">ethtool</span> <span class="o">-</span><span class="n">s</span> <span class="o">&lt;</span><span class="n">interface_name</span><span class="o">&gt;</span> <span class="n">speed</span> <span class="mi">10000</span>
 <span class="o">&gt;</span><span class="n">ifconfig</span> <span class="o">&lt;</span><span class="n">interface_name</span><span class="o">&gt;</span> <span class="n">up</span>
@@ -309,14 +312,14 @@ iperf3 -c &lt;host_interface_IP&gt; -T -u -p &lt;port_no&gt;  -t 60 -i 60</p>
 </div>
 </div>
 <div class="section" id="next-steps">
-<h3>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h3>
+<h3>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Go back to the <a class="reference internal" href="../platform_landing.html"><span class="doc">VCK190 Ethernet TRD design start page</span></a></p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="license">
-<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<h2>License<a class="headerlink" href="#license" title="Permalink to this heading">¶</a></h2>
 <p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License.</p>
 <p>You may obtain a copy of the License at
 <a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
@@ -346,7 +349,7 @@ iperf3 -c &lt;host_interface_IP&gt; -T -u -p &lt;port_no&gt;  -t 60 -i 60</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2022-2023, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on January 03, 2023.
+      <span class="lastupdated">Last updated on March 15, 2023.
       </span></p>
   </div>
 

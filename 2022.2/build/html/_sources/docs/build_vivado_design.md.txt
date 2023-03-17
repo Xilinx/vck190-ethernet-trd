@@ -18,7 +18,7 @@ Accessing the Tutorial Reference Files
 
 <!--- >**Note**: Skip the following steps if the design files have already been cloned and extracted to a working repository --->
 
-1. Download the TRD package from <a href="https://www.xilinx.com/member/forms/download/design-license-xef.html?filename=vck190_ethernet_trd_2022_1.zip">Source Files </a> .
+1. Download the TRD package from <a href="https://www.xilinx.com/member/forms/download/design-license-xef.html?filename=vck190-ethernet-trd_2022.2.zip">Source Files </a> .
 
 2. Unzip the TRD package.
 
@@ -26,7 +26,7 @@ Accessing the Tutorial Reference Files
 
 TRD package File Structure:
 ----------------------------
-* The TRP package file hierarchy is shown in the below snapshot.
+* The TRD package file hierarchy is shown in the below snapshot.
 
 ![trd_package](./media/vck_190_file_hier.PNG)
 
