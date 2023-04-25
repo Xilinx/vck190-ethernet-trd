@@ -21,7 +21,7 @@ Prerequisites
 
 Accessing the Tutorial Reference Files
 --------------------------------------
-1. Download the TRD package from <a href="https://www.xilinx.com/member/forms/download/design-license-xef.html?filename=vck190-ethernet-trd_Phase_2022.2.zip">Source Files </a> .
+1. Download the 2022.2 Source Files from <a href="https://github.com/Xilinx/vck190-ethernet-trd">TRD Home Page </a> .
 
 2. Unzip the TRD package.
 

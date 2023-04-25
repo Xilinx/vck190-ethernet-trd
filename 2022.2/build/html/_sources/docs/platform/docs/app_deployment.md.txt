@@ -86,7 +86,7 @@ Connect a USB-C cable to the USB-UART connector. In a terminal emulator, connect
 
 
 ### Flash the SD Card
- * Download the <a href="https://www.xilinx.com/member/forms/download/design-license-xef.html?filename=vck190_ethernet_trd_prebuilt_2022.2.zip">Pre-Built Package </a> , unzip and save it on your computer. Alternatively, go through the tutorials section to build `petalinux-sdimage.wic` locally.
+ * Download the Pre-Built package from <a href="https://github.com/Xilinx/vck190-ethernet-trd">TRD Home Page </a> , unzip and save it on your computer. Alternatively, go through the tutorials section to build `petalinux-sdimage.wic` locally.
   
   * cd into the directory containing the compressed wic file
   

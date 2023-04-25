@@ -37,7 +37,7 @@ The steps to deploy and run the PTP Phase synchronization application between tw
 
 ### Flash the SD Card 
  
-  1. Download the <a href="https://www.xilinx.com/member/forms/download/design-license-xef.html?filename=vck190_ethernet_trd_prebuilt_2022.2.zip">Pre-Built Package </a> , un zip and save it on your computer. .
+  1. Download the 2022.2 Pre-Built Package from <a href="https://github.com/Xilinx/vck190-ethernet-trd">TRD Home Page </a> , unzip and save it on your computer. .
   
   2. Navigate to the directory containing the prebuilt images `../vck190_ethernet_trd_prebuilt_2022.2`
   
@@ -152,7 +152,7 @@ Once the VCK190 boards are booted, set up an IP address for each ethernet port a
 Accessing the Tutorial Reference Files
 ---------------------------------------
 
-1. Download the TRD package from <a href="https://www.xilinx.com/member/forms/download/design-license-xef.html?filename=vck190_ethernet_trd_2022_1.zip">Source Files </a> .
+1. Download the 2022.2 Source Files from <a href="https://github.com/Xilinx/vck190-ethernet-trd">TRD Home Page </a> .
 
 2. Unzip the TRD package.
 
