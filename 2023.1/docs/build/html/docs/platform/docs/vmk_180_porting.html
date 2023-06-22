@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+  <title>Steps to Build the TRD Package for VMK180 Board &mdash; VCK190 Ethernet TRD 2022.1 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="IEEE 1588 PTP Phase synchronization Platform" href="phase_sync_deployment.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../../../index.html" class="icon icon-home"> VCK190 Ethernet TRD
+            <img src="../../../_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../platform_landing.html">Ethernet TRD</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#features">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#quick-start">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#tutorials">Tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#architecture-documents">Architecture Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#others">Others</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#ptp-1588-phase-synronization">PTP 1588 Phase Synronization</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../platform_landing.html#porting-the-trd-package-to-vmk180-board">Porting the TRD package to VMK180 Board</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Steps to Build the TRD Package for VMK180 Board</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-the-tutorial-reference-files">Accessing the Tutorial Reference Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-the-hardware-design">Build the hardware Design</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-the-petalinux-image">Build the petalinux Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#license">License</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#xilinx-support">Xilinx Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#license">License</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2023.1/build/html/index.html">Master (2023.1)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2022.2/build/html/index.html">2022.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2021.1/build/html/index.html">2021.1</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">VCK190 Ethernet TRD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../platform_landing.html">Ethernet TRD</a> &raquo;</li>
+      <li>Steps to Build the TRD Package for VMK180 Board</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/docs/platform/docs/vmk_180_porting.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <table class="sphinxhide">
+ <tr>
+   <td align="center"><img src="../../media/xilinx-logo.png" width="30%"/><h1> Versal Prime - VCK190 Evaluation Kit Ethernet TRD Tutorial</h1>
+   </td>
+ </tr>
+ <tr>
+ <td align="center"><h1>Build the TRD Package for VMK180 Board</h1> </td>
+ </tr>
+</table><div class="section" id="steps-to-build-the-trd-package-for-vmk180-board">
+<h1>Steps to Build the TRD Package for VMK180 Board<a class="headerlink" href="#steps-to-build-the-trd-package-for-vmk180-board" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Vivado Design Suite 202x.x</p></li>
+<li><p>PetaLinux 202x.x tools</p></li>
+</ul>
+</div>
+<div class="section" id="accessing-the-tutorial-reference-files">
+<h2>Accessing the Tutorial Reference Files<a class="headerlink" href="#accessing-the-tutorial-reference-files" title="Permalink to this heading">¶</a></h2>
+<ol class="simple">
+<li><p>Download the TRD package from <a href="https://github.com/Xilinx/vck190-ethernet-trd">TRD Home Page </a>.</p></li>
+<li><p>Unzip the TRD package.</p></li>
+<li><p>Navigate to the <code class="docutils literal notranslate"><span class="pre">../vck190-ethernet-trd-202x.x&gt;</span></code> which is the working directory.</p></li>
+</ol>
+</div>
+<div class="section" id="build-the-hardware-design">
+<h2>Build the hardware Design<a class="headerlink" href="#build-the-hardware-design" title="Permalink to this heading">¶</a></h2>
+<ol>
+<li><p>Go to the platform directory <code class="docutils literal notranslate"><span class="pre">../vck190-ethernet-trd-202x.x/vivado</span></code>.</p></li>
+<li><p>Source the 202x.x Vivado Tool.</p></li>
+<li><p>Run the Makefile to build the hardware design for the vck190 Evaluation Board.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">make</span> <span class="n">design_xsa</span>   
+</pre></div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Note:Do not run the Synthesis and Implementation steps. This can be achieved by commenting <strong>source ../runs.tcl</strong> command in <code class="docutils literal notranslate"><span class="pre">../vck190_ethernet_platform/scripts/main.tcl</span></code></strong></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Open Vivado Tool in GUI Mode.</p></li>
+<li><p>Open Project   <code class="docutils literal notranslate"><span class="pre">../vck190-ethernet-trd-202x.x/vivado/vck190_ethernet_platform/project/mrmac_subsys.xpr</span></code></p></li>
+<li><p>Open the settings in Project Manager pane, and in Project Settings General tab click <strong>Project device</strong> to change the Board part.</p></li>
+<li><p>In the Boards tab, search for <strong>vmk180</strong> and select the Versal VMK180 Evaluation Platform (xcvm1802-vsva2197-2MP-e-S) as shown below.</p>
+<p><img alt="vmk180-brd2" src="../../../_images/vmk-180-brd-2.png" /></p>
+</li>
+<li><p>After selection, the project settings looks like below for the VMK180 Evaluation Board.</p>
+<p><img alt="vmk180-brd1" src="../../../_images/vmk-180-brd-1.png" /></p>
+</li>
+<li><p>Click <strong>OK</strong> to proceed. A popup will shows up as below, click <strong>No</strong> to proceed further.</p>
+<p><img alt="vmk180-brd3" src="../../../_images/vmk-180-brd-3.png" /></p>
+</li>
+<li><p>Open Report Tab and click <strong>Report IP Status</strong></p></li>
+<li><p>The list of IPs to be upgraded will be listed down, click <strong>Upgrade Selected</strong> to upgrade the IPs.</p></li>
+<li><p>Save and Validate the Block design.</p></li>
+<li><p>In the Project Manager pane on the left-hand side under Program and Debug, click on <strong>Generate Device Image</strong>. The device image (pdi) for the design will be generated and available at <code class="docutils literal notranslate"><span class="pre">$working_dir/vivado/&lt;platform_name&gt;/projec/impl_1/mrmac_subsys_wrapper.pdi</span></code>.</p></li>
+<li><p>To generate the XSA, select File → Export→ Export Hardware. While generating XSA make sure to Include device Image.</p></li>
+</ol>
+</div>
+<div class="section" id="build-the-petalinux-image">
+<h2>Build the petalinux Image<a class="headerlink" href="#build-the-petalinux-image" title="Permalink to this heading">¶</a></h2>
+<ol>
+<li><p>Go to the petalinux directory <code class="docutils literal notranslate"><span class="pre">../vck190-ethernet-trd/petalinux/xilinx-vck190-trd/</span></code></p></li>
+<li><p>Source the 202x.x petalinux tool.</p></li>
+<li><p>The project needs to be configured with the XSA file for <strong>VMK180</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">petalinux</span><span class="o">-</span><span class="n">config</span> <span class="o">--</span><span class="n">get</span><span class="o">-</span><span class="n">hw</span><span class="o">-</span><span class="n">description</span><span class="o">=&lt;</span><span class="n">path</span> <span class="n">of</span> <span class="n">xsa</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">silentconfig</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run the below commands to build and package the wic image in compressed format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">petalinux</span><span class="o">-</span><span class="n">build</span>
+ <span class="n">petalinux</span><span class="o">-</span><span class="n">package</span> <span class="o">--</span><span class="n">boot</span> <span class="o">--</span><span class="n">psm</span> <span class="n">no</span> <span class="o">--</span><span class="n">plm</span> <span class="n">no</span> <span class="o">--</span><span class="n">add</span> <span class="n">images</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">Image</span> <span class="o">--</span><span class="n">load</span> <span class="mh">0x00200000</span> <span class="o">--</span><span class="n">add</span> <span class="n">images</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">rootfs</span><span class="o">.</span><span class="n">cpio</span><span class="o">.</span><span class="n">gz</span><span class="o">.</span><span class="n">u</span><span class="o">-</span><span class="n">boot</span> <span class="o">--</span><span class="n">load</span> <span class="mh">0x04000000</span> <span class="o">--</span><span class="n">add</span> <span class="n">images</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">boot</span><span class="o">.</span><span class="n">scr</span> <span class="o">--</span><span class="n">load</span> <span class="mh">0x20000000</span> <span class="o">--</span><span class="n">force</span> <span class="o">--</span><span class="n">uboot</span>
+ <span class="n">petalinux</span><span class="o">-</span><span class="n">package</span> <span class="o">--</span><span class="n">wic</span> <span class="o">--</span><span class="n">wic</span><span class="o">-</span><span class="n">extra</span><span class="o">-</span><span class="n">args</span> <span class="s2">&quot;-c xz&quot;</span>
+</pre></div>
+</div>
+<p>The generated compressed image file will be located at <code class="docutils literal notranslate"><span class="pre">images/linux/petalinux-sdimage.wic.xz</span></code>.</p>
+</li>
+<li><p>To uncompress wic file use following command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">xz</span> <span class="o">-</span><span class="n">d</span> <span class="o">-</span><span class="n">v</span> <span class="n">images</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">petalinux</span><span class="o">-</span><span class="n">sdimage</span><span class="o">.</span><span class="n">wic</span><span class="o">.</span><span class="n">xz</span>
+</pre></div>
+</div>
+</li>
+<li><p>Follow the steps mentioned in <a class="reference internal" href="app_deployment.html"><span class="doc">Setting up the Board and Application Deployment</span></a> to run the application.</p></li>
+</ol>
+<div class="section" id="next-steps">
+<h3>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Go back to the <a class="reference internal" href="../platform_landing.html"><span class="doc">VCK190 Ethernet TRD design start page</span></a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this heading">¶</a></h2>
+<p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License.</p>
+<p>You may obtain a copy of the License at
+<a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
+<p align="center">Copyright&copy; 2022 Xilinx</p></div>
+</div>
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="phase_sync_deployment.html" class="btn btn-neutral float-left" title="IEEE 1588 PTP Phase synchronization Platform" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022-2023, Xilinx, Inc. Xilinx is now a part of AMD.
+      <span class="lastupdated">Last updated on June 22, 2023.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="https://pages.gitenterprise.xilinx.com/techdocs/Test/vvas/build/html/index.html#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>
