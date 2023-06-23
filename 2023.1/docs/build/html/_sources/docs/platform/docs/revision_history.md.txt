@@ -12,6 +12,10 @@
 
 Revision History
 ============
+## 2023.1 Release
+
+* Individual prebuilt petalinux images are shared in place of *.wic image.
+
 ## 2022.2 Release
 
 * Plain Upgrade

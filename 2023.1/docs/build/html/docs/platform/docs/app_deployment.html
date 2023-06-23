@@ -68,7 +68,7 @@ function OptanonWrapper() { }
 <li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#tutorials">Tutorials</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#architecture-documents">Architecture Documents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#others">Others</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#ptp-1588-phase-synronization">PTP 1588 Phase Synronization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#ptp-1588-phase-synchronization">PTP 1588 Phase Synchronization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#porting-the-trd-package-to-vmk180-board">Porting the TRD package to VMK180 Board</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#xilinx-support">Xilinx Support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#license">License</a></li>
@@ -223,11 +223,11 @@ function OptanonWrapper() { }
 <li><p>Execute the following command to start iperf3 client, this will start the traffic.</p>
 <blockquote>
 <div><p>TCP:
-iperf3 -c &lt;host_interface_IP&gt; -T -p &lt;port_no&gt; -t 60 -i 60</p>
+iperf3 -c &lt;host_interface_IP&gt; -T s1 -p &lt;port_no&gt; -t 60 -i 60</p>
 </div></blockquote>
 <blockquote>
 <div><p>UDP:
-iperf3 -c &lt;host_interface_IP&gt; -T -u -p &lt;port_no&gt;  -t 60 -i 60</p>
+iperf3 -c &lt;host_interface_IP&gt; -T s1 -u -p &lt;port_no&gt;  -t 60 -i 60</p>
 </div></blockquote>
 </li>
 </ul>
@@ -323,7 +323,7 @@ iperf3 -c &lt;host_interface_IP&gt; -T -u -p &lt;port_no&gt;  -t 60 -i 60</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2022-2023, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on June 22, 2023.
+      <span class="lastupdated">Last updated on June 23, 2023.
       </span></p>
   </div>
 

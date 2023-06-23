@@ -61,7 +61,7 @@ Others
    docs/issue_sc.md
    docs/revision_history.md
 
-PTP 1588 Phase Synronization
+PTP 1588 Phase Synchronization
 ------------------------------
 .. toctree::
    :maxdepth: 1

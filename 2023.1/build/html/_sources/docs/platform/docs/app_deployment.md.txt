@@ -128,10 +128,10 @@ Once the host and VCK190 are booted, set up an IP address for each ethernet port
  * Execute the following command to start iperf3 client, this will start the traffic.
 	
    >TCP:
-   iperf3 -c <host_interface_IP> -T -p <port_no> -t 60 -i 60
+   iperf3 -c <host_interface_IP> -T s1 -p <port_no> -t 60 -i 60
    
    >UDP:
-   iperf3 -c <host_interface_IP> -T -u -p <port_no>  -t 60 -i 60
+   iperf3 -c <host_interface_IP> -T s1 -u -p <port_no>  -t 60 -i 60
  
 PTP commands
 -------------
