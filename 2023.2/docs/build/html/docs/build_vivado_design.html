@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+  <title>TRD Package &mdash; VCK190 Ethernet TRD 2022.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/documentation_options.js?v=2406f4f9"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Software Architecture of the Platform" href="platform/docs/sw_arch_platform.html" />
+    <link rel="prev" title="Setting up the Board and Application Deployment" href="platform/docs/app_deployment.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../index.html" class="icon icon-home"> VCK190 Ethernet TRD
+          </a>
+              <div class="version">
+                2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="platform/platform_landing.html">MRMAC Ethernet TRD</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="platform/platform_landing.html#features">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform/platform_landing.html#quick-start">Quick Start</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="platform/platform_landing.html#tutorials">Tutorials</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">TRD Package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-the-tutorial-reference-files">Accessing the Tutorial Reference Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trd-package-file-structure">TRD package File Structure:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#build-flow">Build Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#to-build-the-trd-package-with-the-top-makefile">To Build the TRD Package with the top Makefile:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#to-build-the-hardware-platform-xsa">To Build the Hardware Platform XSA:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modifying-the-design-and-creating-a-new-xsa">Modifying the design and creating a new XSA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#to-build-the-petalinux-images">To Build the Petalinux Images:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#license">License</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="platform/platform_landing.html#architecture-documents">Architecture Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform/platform_landing.html#others">Others</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform/platform_landing.html#ptp-1588-phase-synchronization">PTP 1588 Phase Synchronization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform/platform_landing.html#porting-the-trd-package-to-vmk180-board">Porting the TRD package to VMK180 Board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform/platform_landing.html#xilinx-support">Xilinx Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform/platform_landing.html#license">License</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2023.2/build/html/index.html">Master (2023.2)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2023.1/build/html/index.html">2023.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2022.2/build/html/index.html">2022.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2021.1/build/html/index.html">2021.1</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">VCK190 Ethernet TRD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="platform/platform_landing.html">MRMAC Ethernet TRD</a> &raquo;</li>
+      <li>TRD Package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/build_vivado_design.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <table class="sphinxhide">
+ <tr>
+   <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/><h1> Versal Prime-VCK190 Evaluation Kit Tutorial</h1>
+   </td>
+ </tr>
+ <tr>
+ <td align="center"><h1>Using Vivado to Build the Hardware Design</h1> </td>
+ </tr>
+</table><section id="trd-package">
+<h1>TRD Package<a class="headerlink" href="#trd-package" title="Link to this heading">¶</a></h1>
+<section id="accessing-the-tutorial-reference-files">
+<h2>Accessing the Tutorial Reference Files<a class="headerlink" href="#accessing-the-tutorial-reference-files" title="Link to this heading">¶</a></h2>
+<!--- >**Note**: Skip the following steps if the design files have already been cloned and extracted to a working repository ---><ol class="simple">
+<li><p>Download the 2023.2 Source Files from <a href="https://github.com/Xilinx/vck190-ethernet-trd">TRD Home Page </a> .</p></li>
+<li><p>Unzip the TRD package.</p></li>
+<li><p>Navigate to the <code class="docutils literal notranslate"><span class="pre">../vck190-ethernet-trd-2023.2</span></code> which is the working directory.</p></li>
+</ol>
+</section>
+<section id="trd-package-file-structure">
+<h2>TRD package File Structure:<a class="headerlink" href="#trd-package-file-structure" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>The TRD package file hierarchy is shown in the below snapshot.</p></li>
+</ul>
+<p><img alt="trd_package" src="../_images/vck_190_file_hier.PNG" /></p>
+<p>The TRD package contains:</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Makefile</span></code> has scripts to build the entire TRD package hardware and software platforms in a single run.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">README.md</span></code> README.md contains the documentation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vivado</span></code> folder contains files to create the vck190 ethernet hardware platform.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">petalinux</span></code> folder contains files to build the petalinux images.</p></li>
+</ol>
+</section>
+</section>
+<section id="build-flow">
+<h1>Build Flow<a class="headerlink" href="#build-flow" title="Link to this heading">¶</a></h1>
+<p>This tutorial shows how to build the TRD package.</p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Vivado Design Suite 2023.2</p></li>
+<li><p>PetaLinux 2023.2 tools</p></li>
+</ul>
+</section>
+<section id="to-build-the-trd-package-with-the-top-makefile">
+<h2>To Build the TRD Package with the top Makefile:<a class="headerlink" href="#to-build-the-trd-package-with-the-top-makefile" title="Link to this heading">¶</a></h2>
+<p>Running the <code class="docutils literal notranslate"><span class="pre">../vck190-ethernet-trd-2023.2/Makefile</span></code> will generate the hardware platform XSA and subsequently the petalinux images.</p>
+<ol>
+<li><p>Go to the working directory</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">vck190</span><span class="o">-</span><span class="n">ethernet</span><span class="o">-</span><span class="n">trd</span><span class="o">-</span><span class="mf">2023.2</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run the following command to build and generate sdcard image. This Makefile calls lower level Makefiles to build hardware XSA and petalinux images. The XSA generation may take couple of hours depending on the system specification.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">sdcard</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="to-build-the-hardware-platform-xsa">
+<h2>To Build the Hardware Platform XSA:<a class="headerlink" href="#to-build-the-hardware-platform-xsa" title="Link to this heading">¶</a></h2>
+<p>This tutorial shows how to build XSA alone using the makefiles</p>
+<ul class="simple">
+<li><p>Generate XSA using <code class="docutils literal notranslate"><span class="pre">../vck190-ethernet-trd-2023.2/vivado/Makefile</span></code></p></li>
+</ul>
+<ol>
+<li><p>Go to the platform directory specific to the application</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">vck190</span><span class="o">-</span><span class="n">ethernet</span><span class="o">-</span><span class="n">trd</span><span class="o">-</span><span class="mf">2023.2</span><span class="o">/</span><span class="n">vivado</span><span class="o">/</span>
+</pre></div>
+</div>
+</li>
+<li><p>To build the XSA, Source Vivado and run the following command. The Makefile uses scripts/main.tcl file to create a Vivado project, populate the block design and finally build a XSA. The XSA generation may take couple of hours depending on the system specification</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">design_xsa</span>   
+</pre></div>
+</div>
+</li>
+<li><p>The generated XSA will be located at:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$working_dir/vivado/vck190_ethernet_platform/project/mrmac_subsys_wrapper.xsa
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Generate XSA from top make file <code class="docutils literal notranslate"><span class="pre">../vck190-ethernet-trd-2023.2/Makefile</span></code>:</p></li>
+</ul>
+<ol class="simple">
+<li><p>Navigate to the <code class="docutils literal notranslate"><span class="pre">vck190-ethernet-trd</span></code> which is the working directory</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">make</span> <span class="n">vivado_design</span> <span class="n">design</span><span class="o">=&lt;</span><span class="n">Platform</span> <span class="n">name</span><span class="o">&gt;</span> <span class="n">JOBS</span><span class="o">=&lt;</span><span class="n">n</span><span class="o">&gt;</span>
+ 
+</pre></div>
+</div>
+</section>
+<section id="modifying-the-design-and-creating-a-new-xsa">
+<h2>Modifying the design and creating a new XSA<a class="headerlink" href="#modifying-the-design-and-creating-a-new-xsa" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p><strong>Note</strong>: The steps below are optional and are required only if you need to change the platform design.</p>
+</div></blockquote>
+<ol>
+<li><p>Go to the directory specific to the platform design</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd $working_dir/vivado/vck190_ethernet_platform/
+</pre></div>
+</div>
+</li>
+<li><p>To open the Vivado project, first open the Vivado GUI, then run the following command from the Vivado tcl console:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">open_project</span> <span class="o">./</span><span class="n">project</span><span class="o">/</span><span class="n">mrmac_subsys</span><span class="o">.</span><span class="n">xpr</span>
+</pre></div>
+</div>
+</li>
+<li><p>In the Flow Navigator pane on the left-hand side under IP integrator, click on Open Block Design. An IP integrator block design becomes visible that contains the Processing System (PS) IP and other PL IPs.</p></li>
+<li><p>In the Flow Navigator pane on the left-hand side under Program and Debug, click on Generate Device Image. The device image (pdi) for the design will be generated and available at <code class="docutils literal notranslate"><span class="pre">$working_dir/vivado/&lt;platform_name&gt;/projec/impl_1/mrmac_subsys_wrapper.pdi</span></code>.</p></li>
+<li><p>To generate the XSA, select File → Export→ Export Hardware.</p>
+<p>The Export Hardware dialog box opens.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">Choose</span> <span class="n">Include</span> <span class="n">device</span> <span class="n">image</span> <span class="ow">and</span> <span class="n">click</span> <span class="n">Next</span><span class="o">.</span>
+
+ <span class="n">Provide</span> <span class="n">the</span> <span class="n">name</span> <span class="k">for</span> <span class="n">the</span> <span class="n">exported</span> <span class="n">file</span> <span class="k">as</span> <span class="n">mrmac_subsys_wrapper</span> <span class="ow">and</span> <span class="n">use</span> <span class="n">the</span> <span class="n">default</span> <span class="n">location</span> <span class="n">to</span> <span class="n">save</span> <span class="n">the</span> <span class="n">file</span><span class="o">.</span> <span class="n">Click</span> <span class="n">Next</span><span class="o">.</span>
+
+ <span class="n">A</span> <span class="n">warning</span> <span class="n">message</span> <span class="n">appears</span> <span class="k">if</span> <span class="n">a</span> <span class="n">Hardware</span> <span class="n">Module</span> <span class="n">has</span> <span class="n">already</span> <span class="n">been</span> <span class="n">exported</span><span class="o">.</span> <span class="n">Click</span> <span class="n">Yes</span> <span class="n">to</span> <span class="n">overwrite</span> <span class="n">the</span> <span class="n">existing</span> <span class="n">XSA</span> <span class="n">file</span><span class="p">,</span> <span class="k">if</span> <span class="n">the</span> <span class="n">overwrite</span> <span class="n">message</span> <span class="ow">is</span> <span class="n">displayed</span><span class="o">.</span>
+
+ <span class="n">Click</span> <span class="n">Finish</span><span class="o">.</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="to-build-the-petalinux-images">
+<h2>To Build the Petalinux Images:<a class="headerlink" href="#to-build-the-petalinux-images" title="Link to this heading">¶</a></h2>
+<p>In the following sections, the steps to build petalinux images are given.</p>
+<p>Follow the steps below to build petalinux images using the Makefile in <code class="docutils literal notranslate"><span class="pre">../vck190-ethernet-trd-2023.2/petalinux/xilinx-vck190-trd</span> <span class="pre">path</span></code></p>
+<ol>
+<li><p>Go to the petalinux BSP folder.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../</span><span class="n">vck190</span><span class="o">-</span><span class="n">ethernet</span><span class="o">-</span><span class="n">trd</span><span class="o">-</span><span class="mf">2023.2</span><span class="o">/</span><span class="n">petalinux</span><span class="o">/</span><span class="n">xilinx</span><span class="o">-</span><span class="n">vck190</span><span class="o">-</span><span class="n">trd</span>
+</pre></div>
+</div>
+</li>
+<li><p>To build boot images, source petalinux tool and run the following command.</p>
+<p>The Makefile configures the hardware platform required to build the petalinux images and create BOOT.BIN, which comprise of  FSBL, UBoot, PMU firmware and hardware bit file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">boot</span>
+</pre></div>
+</div>
+</li>
+<li><p>The generated images will be located at:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">../</span><span class="n">vck190</span><span class="o">-</span><span class="n">ethernet</span><span class="o">-</span><span class="n">trd</span><span class="o">-</span><span class="mf">2023.2</span><span class="o">/</span><span class="n">petalinux</span><span class="o">/</span><span class="n">xilinx</span><span class="o">-</span><span class="n">vck190</span><span class="o">-</span><span class="n">trd</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">linux</span>
+</pre></div>
+</div>
+</li>
+<li><p>Copy the image (<code class="docutils literal notranslate"><span class="pre">BOOT.BIN</span> <span class="pre">,</span> <span class="pre">rootfs.cpio.gz.uboot</span> <span class="pre">,</span> <span class="pre">Image</span> <span class="pre">and</span> <span class="pre">boot.scr</span></code> ) to the FAT32 formatted SD card and insert the card in SD card slot to run the design. This image is functionally equivalent to the prebuilt sdcard image provided with package.</p></li>
+</ol>
+<section id="next-steps">
+<h3>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="platform/docs/app_deployment.html"><span class="doc">Setting up the Board and Application Deployment</span></a></p></li>
+<li><p>Go back to the <a class="reference internal" href="platform/docs/introduction.html"><span class="doc">VCK190 Targeted Reference Designs start page</span></a></p></li>
+</ul>
+</section>
+<section id="references">
+<h3>References<a class="headerlink" href="#references" title="Link to this heading">¶</a></h3>
+<p>For more information on how to setup Platform Interfaces refer to Xilinx Vitis Unified Software Platform Documentation <a class="reference external" href="https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug1393-vitis-application-acceleration.pdf">UG1393</a></p>
+<ul class="simple">
+<li><p>Petalinux user guide <a class="reference external" href="https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug1144-petalinux-tools-reference-guide.pdf">UG1144</a></p></li>
+</ul>
+</section>
+</section>
+<section id="license">
+<h2>License<a class="headerlink" href="#license" title="Link to this heading">¶</a></h2>
+<p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License.</p>
+<p>You may obtain a copy of the License at
+<a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
+<p align="center">Copyright © 2023 Advanced Micro Devices, Inc</p></section>
+</section>
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="platform/docs/app_deployment.html" class="btn btn-neutral float-left" title="Setting up the Board and Application Deployment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="platform/docs/sw_arch_platform.html" class="btn btn-neutral float-right" title="Software Architecture of the Platform" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022-2023, Xilinx, Inc. Xilinx is now a part of AMD.
+      <span class="lastupdated">Last updated on October 19, 2023.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="https://pages.gitenterprise.xilinx.com/techdocs/Test/vvas/build/html/index.html#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

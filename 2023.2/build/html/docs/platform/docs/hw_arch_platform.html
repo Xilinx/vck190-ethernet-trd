@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+  <title>Hardware Architecture of the Platform &mdash; VCK190 Ethernet TRD 2022.1 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/documentation_options.js?v=2406f4f9"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Hardware Acchitecture of the PTP Packet Processor" href="hw_arch_ptp_pkt_proc.html" />
+    <link rel="prev" title="Software Architecture of the Platform" href="sw_arch_platform.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../../../index.html" class="icon icon-home"> VCK190 Ethernet TRD
+          </a>
+              <div class="version">
+                2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../platform_landing.html">MRMAC Ethernet TRD</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#features">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#quick-start">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#tutorials">Tutorials</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../platform_landing.html#architecture-documents">Architecture Documents</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sw_arch_platform.html">Software Architecture of the Platform</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Hardware Architecture of the Platform</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#resource-utilization">Resource Utilization</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="hw_arch_ptp_pkt_proc.html">Hardware Acchitecture of the PTP Packet Processor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#others">Others</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#ptp-1588-phase-synchronization">PTP 1588 Phase Synchronization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#porting-the-trd-package-to-vmk180-board">Porting the TRD package to VMK180 Board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#xilinx-support">Xilinx Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#license">License</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2023.2/build/html/index.html">Master (2023.2)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2023.1/build/html/index.html">2023.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2022.2/build/html/index.html">2022.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2021.1/build/html/index.html">2021.1</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">VCK190 Ethernet TRD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../platform_landing.html">MRMAC Ethernet TRD</a> &raquo;</li>
+      <li>Hardware Architecture of the Platform</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/docs/platform/docs/hw_arch_platform.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <table class="sphinxhide">
+ <tr>
+   <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/><h1> Versal Prime -VCK190 Evaluation Kit  <br>Ethernet TRD Tutorial</h1>
+   </td>
+ </tr>
+ <tr>
+ <td align="center"><h1> Hardware Architecture of the Platform </h1> </td>
+ </tr>
+</table><section id="hardware-architecture-of-the-platform">
+<h1>Hardware Architecture of the Platform<a class="headerlink" href="#hardware-architecture-of-the-platform" title="Link to this heading">¶</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<p>This section describes the design implemented on Control Interface and Processor System (CIPS) and Programmable Logic (PL) on the VCK190 board.</p>
+<p>The following figure shows the top level hardware architecture of the reference design. The following section provides the details of various components in the platform as illustrated in the figure:</p>
+<p><img alt="../../../_images/Hardware_system_Block_Diagram.PNG" src="../../../_images/Hardware_system_Block_Diagram.PNG" /></p>
+<ul>
+<li><p>Control Interface and Processor Subsystem (CIPS):
+The CIPS present in Versal devices contains high performance ARM A72 processors. On-chip and cache memory are included along with a suite of hardened communication peripherals. In the initial platform, an ARM A72 device will be employed and will be given access to 2GBytes of DDR RAM.</p></li>
+<li><p>Programmable Logic (PL)
+This contains the following main IP:</p>
+<ul>
+<li><p>Network-On-Chip (NoC)
+Versal devices are designed around a NoC interconnect, which provides high bandwidth communication between different areas of the device. In this Platform NoC will be used     to:</p>
+<ul class="simple">
+<li><p>Transmit the streaming ethernet data received by the AXI MCDMA to the memory.</p></li>
+<li><p>Transmit the ethernet data from the memory to the MRMAC via the streaming interface of the AXI MCDMA.</p></li>
+</ul>
+</li>
+<li><p>Multi Rate Media Access Control (MRMAC)</p>
+<p>The MRMAC IP has AXI stream ports at the transmit and receive ends. The ethernet packets are transmitted/received via these AXI streaming ports. It has an AXI-Lite	             interface for accessing the control information of the IP.</p>
+</li>
+<li><p>Quad Base Gigabit Transceiver Interface (GTY)</p>
+<p>The Quad Base GT receives ethernet data from the external world and transmits it to the MRMAC IP. It also takes the Ethernet data from MRMAC and transmits it to the outside     world.</p>
+</li>
+<li><p>AXI Direct Memory Access (AXI-MCDMA)</p>
+<p>This is a standard AXI Multi Channel Direct Memory Access IP used in the PL. This facilitates the transfer of the Ethernet packets to       the MRMAC for MAC processing.</p>
+</li>
+<li><p>Tx PTP HW Master on the Transmission path to detect PTP packet and store timestamp in memory.</p></li>
+<li><p>Rx PTP logic to detect PTP packet and prepend the PTP Timestamp with corresponding Ethernet data.</p></li>
+<li><p>One step helper block in the transmit direction to process the PTP packets in 1-step mode.</p></li>
+</ul>
+</li>
+</ul>
+<p>The following is the packet flow for the normal Ethernet packets in both direction:</p>
+<ul>
+<li><p>Transmit:</p>
+<p>o The Ethernet data generated and stored in the memory.</p>
+<p>o This data is transferred to the MRMAC via AXI MCDMA MM2S interface.</p>
+<p>o The MRMAC, after processing the packets transmits it to the GTY.</p>
+<p>o The GTY Transmits this data to the output onto the Ethernet link.</p>
+<p>o The GTY output is connected to an external NIC. This NIC receives the ethernet packets.</p>
+</li>
+<li><p>Receive:</p>
+<p>o The External NIC generated Ethernet packets.</p>
+<p>o This data is received at the GT interface.</p>
+<p>o From the GT, the data is transferred to MRMAC.</p>
+<p>o The MRMAC sends this data via the streaming interface to the S2MM port of AXI MCDMA.</p>
+<p>o The AXI MCDMA writes this data onto the memory.</p>
+</li>
+</ul>
+<p>For the PTP Packets, the PL based PTP Packet processors are used in both Transmit and Receive directions.</p>
+<p>In the Transmit direction, the PTP Packet processor and the One Step helper block is present between AXI MCDMA MM2S and MRMAC Tx interfaces.</p>
+<p>In the Receive direction, the PTP Packet processor is present between MRMAC Rx and AXI MCDMA S2MM interfaces.</p>
+<p>Further details on the PTP Packet processors can be found in this page. <a class="reference internal" href="hw_arch_ptp_pkt_proc.html"><span class="doc">Hardware Architecture of the PTP Packet Processor</span></a></p>
+</section>
+<section id="resource-utilization">
+<h2>Resource Utilization<a class="headerlink" href="#resource-utilization" title="Link to this heading">¶</a></h2>
+<p><img alt="../../../_images/resource_util.PNG" src="../../../_images/resource_util.PNG" /></p>
+<p><strong>Next Steps</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="hw_arch_ptp_pkt_proc.html"><span class="doc">Hardware Architecture of the PTP Packet Processor</span></a></p></li>
+<li><p>Go back to the <a class="reference internal" href="../platform_landing.html"><span class="doc">VCK190 Ethernet TRD design start page</span></a></p></li>
+</ul>
+<p><strong>License</strong></p>
+<p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License.</p>
+<p>You may obtain a copy of the License at
+<a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
+<p align="center">Copyright © 2023 Advanced Micro Devices, Inc</p></section>
+</section>
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="sw_arch_platform.html" class="btn btn-neutral float-left" title="Software Architecture of the Platform" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hw_arch_ptp_pkt_proc.html" class="btn btn-neutral float-right" title="Hardware Acchitecture of the PTP Packet Processor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022-2023, Xilinx, Inc. Xilinx is now a part of AMD.
+      <span class="lastupdated">Last updated on October 19, 2023.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="https://pages.gitenterprise.xilinx.com/techdocs/Test/vvas/build/html/index.html#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

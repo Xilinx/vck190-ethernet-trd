@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+  <title>Hardware Acchitecture of the PTP Packet Processor &mdash; VCK190 Ethernet TRD 2022.1 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/documentation_options.js?v=2406f4f9"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Known Issues" href="issue_sc.html" />
+    <link rel="prev" title="Hardware Architecture of the Platform" href="hw_arch_platform.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../../../index.html" class="icon icon-home"> VCK190 Ethernet TRD
+          </a>
+              <div class="version">
+                2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../platform_landing.html">MRMAC Ethernet TRD</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#features">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#quick-start">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#tutorials">Tutorials</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../platform_landing.html#architecture-documents">Architecture Documents</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sw_arch_platform.html">Software Architecture of the Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hw_arch_platform.html">Hardware Architecture of the Platform</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Hardware Acchitecture of the PTP Packet Processor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ptp-tx-hw-master-ip">PTP Tx HW MASTER IP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rx-ptp-packet-detect-logic-ip">Rx PTP PACKET DETECT LOGIC IP</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#others">Others</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#ptp-1588-phase-synchronization">PTP 1588 Phase Synchronization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#porting-the-trd-package-to-vmk180-board">Porting the TRD package to VMK180 Board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#xilinx-support">Xilinx Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#license">License</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2023.2/build/html/index.html">Master (2023.2)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2023.1/build/html/index.html">2023.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2022.2/build/html/index.html">2022.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2021.1/build/html/index.html">2021.1</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">VCK190 Ethernet TRD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../platform_landing.html">MRMAC Ethernet TRD</a> &raquo;</li>
+      <li>Hardware Acchitecture of the PTP Packet Processor</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/docs/platform/docs/hw_arch_ptp_pkt_proc.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <table class="sphinxhide">
+ <tr>
+   <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/><h1> Versal Prime -VCK190 Evaluation Kit <br> Ethernet TRD Tutorial</h1>
+   </td>
+ </tr>
+ <tr>
+ <td align="center"><h1> Hardware Architecture of the PTP Packet Processor </h1> </td>
+ </tr>
+</table><section id="hardware-acchitecture-of-the-ptp-packet-processor">
+<h1>Hardware Acchitecture of the PTP Packet Processor<a class="headerlink" href="#hardware-acchitecture-of-the-ptp-packet-processor" title="Link to this heading">¶</a></h1>
+<section id="ptp-tx-hw-master-ip">
+<h2>PTP Tx HW MASTER IP<a class="headerlink" href="#ptp-tx-hw-master-ip" title="Link to this heading">¶</a></h2>
+<p>The PTP HW Master receives the necessary information from the USER-APP fields of the AXI MCDMA for capturing timestamp and storing it in memory for the Transmitted PTP packets. The address of the memory where the timestamp needs to be stored is provided by the USER-APP fields of AXI MCDMA Control stream.
+The SW provides a 2-bit PTP flag. Based on the value of the Flag bits, the PTP HW Master drives the tx_ptp_1588op_in [1:0] interface of MRMAC.
+MRMAC performs the PTP operation based on the 2 bit value of tx_ptp_1588op_in[1:0] as given in below table:</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>tx_ptp_1588op_in [1:0]</th>
+<th>Operation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2’b00</td>
+<td>No operation: no timestamp is taken, and the frame is not modified.</td>
+</tr>
+<tr>
+<td>2’b01</td>
+<td>1-step: a timestamp should be taken and inserted into the frame.</td>
+</tr>
+<tr>
+<td>2’b10</td>
+<td>2-step: a timestamp should be taken and returned to the client using the additional ports of 2-step operation. The frame itself is not modified.</td>
+</tr>
+<tr>
+<td>2’b11</td>
+<td>Reserved</td>
+</tr>
+</tbody>
+</table><p><img alt="../../../_images/Enhanced_PTP_logic_pipeline.PNG" src="../../../_images/Enhanced_PTP_logic_pipeline.PNG" /></p>
+<p>The PTP HW Master supports both 1-step and 2-step PTP modes.</p>
+<ul class="simple">
+<li><p>2-step Mode:</p></li>
+</ul>
+<p>When the ptp flag value is “10”, the PTP HW Master initiates a memory write operation of the timestamp value. The timestamp value is written into the memory via NoC. The PTP HW Master makes the final bit 1 (qualifier bit) to indicate the memory write completion to Software.
+The command received from the MCDMA control stream is transmitted to the one step helper block. The one step helper block does not perform any processing on the incoming data packets. It transmits the received packets to the MRMAC without any modifications.</p>
+<ul class="simple">
+<li><p>1-step E2E Mode:</p></li>
+</ul>
+<p>•	Sync Packet</p>
+<p>i.	The Tx PTP HW Master receives the command from MCDMA control stream. This command is sent to the one step helper block. Based on the command, the one step helper block detects the Sync Packet.</p>
+<p>ii.	In this mode, the one step helper block inserts timestamp on the fly. It appends the timestamp to the incoming data sends the updated data to the MRMAC.</p>
+<p>iii.Also, the one step helper block drives the m_ptp_tag and tx_ptp_upd_chksum_in input of the MRMAC IP which indicates whether a checksum recalculation is required to be done by the MRMAC or not. The location of the checksum is ascertained as described in the tx_ptp_cf_offset field, which is also driven by the one step helper block.</p>
+<p>•	Delay request packet- The mode of operation is same as a 2-step PTP operation.</p>
+<p>•	Delay response packet- No operation required by any of the PTP Packet Processors.</p>
+<ul class="simple">
+<li><p>1-step P2P Mode:</p></li>
+</ul>
+<p>•	Sync Packet</p>
+<p>i.	The mode of operation is same as a 1-step E2E Sync operation</p>
+<p>•	PDelay response packet</p>
+<p>i.	The Tx PTP HW Master receives the command from MCDMA control stream. This command is sent to the one step helper block. Based on the command, the one step helper block detects the PDelay Response Packet.</p>
+<p>ii.	The t2 timestamp information received is extracted by the Rx PDTP and written into a FIFO. The Tx HW Master reads the t2 data from the FIFO and sends it to the one step helper block along with the command.</p>
+<p>iii.The one step helper block inserts timestamp on the fly. It appends the timestamp to the incoming data sends the updated data to the MRMAC.</p>
+<p>iv.	Also, the one step helper block drives the m_ptp_tag  and tx_ptp_upd_chksum_in input of the MRMAC IP which indicates whether a checksum recalculation is required to be done by the MRMAC or not. The location of the checksum is ascertained as described in the tx_ptp_cf_offset field, which is also driven by the one step helper block. *</p>
+<p>•	PDelay request packet- The mode of operation is same as a 2-step PTP operation.</p>
+<p>• For more details on the checksum and correction factor port description and operation, please refer to PG314- Versal Devices Integrated 100G Multirate Ethernet MAC Subsystem v1.3 (<a href="https://docs.xilinx.com/r/1.3-English/pg314-versal-mrmac/Introduction"> PG314 </a>)</p>
+</section>
+<section id="rx-ptp-packet-detect-logic-ip">
+<h2>Rx PTP PACKET DETECT LOGIC IP<a class="headerlink" href="#rx-ptp-packet-detect-logic-ip" title="Link to this heading">¶</a></h2>
+<p>PTP Packet Detection IP parses all the received Packets.</p>
+<p>o When a PTP packet is received, it parses the Header and sets a PTP Qualifier bit (i) when a PTP packet is detected, that helps the PTP application in upper layer for further processing.</p>
+<p>o An additional Qualifier bit is set, when a Peer-to-Peer PTP packet(ii) is detected.</p>
+<p>o Timestamp prepend logic prepends two 64 bit Datawords (128 bit) to all the received packets, which has 80 bit Timestamp information and the status of the Qualifier bits. Below table has the details of prepended datawords.</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Status words</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prepended DW-0</td>
+<td>63 : 0      -    Timestamp[63:0]</td>
+</tr>
+<tr>
+<td>Prepended DW-1</td>
+<td>15 : 0      -    Timestamp[79:64] <div>29 : 16    -    Reserved</div><div>30         -    Peer-to-Peer PTP  Packet Qualifier bit</div><div>31         -    PTP Packet Qualifier bit</div><div>63 : 32    -    Reserved</div></td>
+</tr>
+<tr>
+<td>DW-2</td>
+<td>Received Packet data stream starts</td>
+</tr>
+</tbody>
+</table><p><strong>Supported Features:</strong></p>
+<p>o PTP Packet over IEEEE 802.3</p>
+<p>o PTP Packet over UDP IPV4 – Version 1 and Version 2</p>
+<p>o Two step PTP</p>
+<p>o One step PTP</p>
+<p>The PTP detect logic checks the Type field of the received packet whenever a new ethernet packet is received and also checks for the multicast IP destination address for UDP IPV4 Packets, to carry out the PTP detection.</p>
+<p>(i) PTP Packet Qualifier bit - DW1[31]</p>
+<p>(ii) Peer-to-Peer PTP Packet Qualifier bit - DW1[30]</p>
+<p><strong>Next Steps</strong></p>
+<ul class="simple">
+<li><p>Go to the <a class="reference internal" href="sw_arch_platform.html"><span class="doc">SW Architecture Platform page</span></a></p></li>
+<li><p>Go back to the <a class="reference internal" href="../platform_landing.html"><span class="doc">VCK190 Ethernet TRD design start page</span></a></p></li>
+</ul>
+<p><strong>License</strong></p>
+<p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License.</p>
+<p>You may obtain a copy of the License at
+<a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
+<p align="center">Copyright © 2023 Advanced Micro Devices, Inc</p></section>
+</section>
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="hw_arch_platform.html" class="btn btn-neutral float-left" title="Hardware Architecture of the Platform" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="issue_sc.html" class="btn btn-neutral float-right" title="Known Issues" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022-2023, Xilinx, Inc. Xilinx is now a part of AMD.
+      <span class="lastupdated">Last updated on October 19, 2023.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="https://pages.gitenterprise.xilinx.com/techdocs/Test/vvas/build/html/index.html#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

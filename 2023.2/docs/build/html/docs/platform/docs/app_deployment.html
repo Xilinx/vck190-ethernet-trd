@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+  <title>Setting up the Board and Application Deployment &mdash; VCK190 Ethernet TRD 2022.1 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/documentation_options.js?v=2406f4f9"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="TRD Package" href="../../build_vivado_design.html" />
+    <link rel="prev" title="Design Overview" href="introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../../../index.html" class="icon icon-home"> VCK190 Ethernet TRD
+          </a>
+              <div class="version">
+                2.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../platform_landing.html">MRMAC Ethernet TRD</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#features">Features</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../platform_landing.html#quick-start">Quick Start</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="introduction.html">Design Overview</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Setting up the Board and Application Deployment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#iperf-commands">Iperf Commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ptp-commands">PTP commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dynamic-switching-between-10g-25g">Dynamic switching between 10G &lt;-&gt; 25G</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#license">License</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#tutorials">Tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#architecture-documents">Architecture Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#others">Others</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#ptp-1588-phase-synchronization">PTP 1588 Phase Synchronization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#porting-the-trd-package-to-vmk180-board">Porting the TRD package to VMK180 Board</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#xilinx-support">Xilinx Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#license">License</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Versions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2023.2/build/html/index.html">Master (2023.2)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2023.1/build/html/index.html">2023.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2022.2/build/html/index.html">2022.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2022.1/build/html/index.html">2022.1</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2021.2/build/html/index.html">2021.2</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/vck190-ethernet-trd/2021.1/build/html/index.html">2021.1</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">VCK190 Ethernet TRD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../platform_landing.html">MRMAC Ethernet TRD</a> &raquo;</li>
+      <li>Setting up the Board and Application Deployment</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/docs/platform/docs/app_deployment.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <table class="sphinxhide">
+ <tr>
+   <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/><h1> Versal Prime - VCK190 Evaluation Kit Ethernet TRD Tutorial</h1>
+   </td>
+ </tr>
+ <tr>
+ <td align="center"><h1> Board Setup and Application Deployment</h1> </td>
+ </tr>
+</table><section id="setting-up-the-board-and-application-deployment">
+<h1>Setting up the Board and Application Deployment<a class="headerlink" href="#setting-up-the-board-and-application-deployment" title="Link to this heading">¶</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<p>This document shows how to set up the board and run the Ethernet TRD application with prebuilt images.</p>
+<section id="prerequisites">
+<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h3>
+<ul>
+<li><p>Reference design <code class="docutils literal notranslate"><span class="pre">vck190_ethernet_trd_prebuilt_2023.2.zip</span></code> file</p></li>
+<li><p>VCK190 Evaluation Board</p></li>
+<li><p>Terminal emulator, for example:</p>
+<p>Windows: teraterm (https://osdn.net/projects/ttssh2)</p>
+<p>Linux: picocom (https://github.com/npat-efault/picocom/releases)</p>
+<p>Disk Imager utility, for example</p>
+</li>
+<li><p>Host Machine with 10G/25G capable NIC</p></li>
+<li><p>100G QSFP28 to 4 x 25G SFP28 cable (Board to 10/25G NIC setup)</p></li>
+<li><p>100G QSFP28 to 100G QSFP28 Cable (Board to Board Setup)</p></li>
+<li><p>Iperf3 application</p></li>
+<li><p>ptp4l application</p></li>
+</ul>
+</section>
+<section id="board-setup">
+<h3>Board Setup<a class="headerlink" href="#board-setup" title="Link to this heading">¶</a></h3>
+<p>The following figure shows how to set up the VCK190 evaluation board.</p>
+<p><img alt="setup" src="../../../_images/vck190_setup.PNG" /></p>
+<p><strong>Board jumper and switch settings</strong></p>
+<p>This is a one-time setup and the board should have been delivered to you with this default setting, however it is good to double check for the first time when you get the board.</p>
+<ul class="simple">
+<li><p>Make sure you remove J326 (7-8) jumper.</p></li>
+<li><p>Setup SYSCTRL Boot mode switch SW11 to (ON,OFF,OFF,OFF) from switch bits 1 to 4 as shown in the above picture.</p></li>
+<li><p>Make sure you have the uSD card with the SYSCTRL image inserted in the uSD SysCtrl slot.</p></li>
+<li><p>It is recommended to use the latest SYSCTRL image.</p></li>
+<li><p>Setup Versal Boot Mode switch SW1 to (ON,OFF,OFF,OFF) from switch bits 1 to 4 as shown in the above picture.</p></li>
+</ul>
+<p><strong>External NIC to VCK190 connection</strong></p>
+<p>Connect a QSFP to SFP cable from VCK190 QSFP Port (J288) to Host Machine NIC SFP Port.</p>
+<p><strong>Serial console settings</strong></p>
+<p>VCK190 comes with a USB-C connector for JTAG+UART, when connected three UART ports should be visible in Device Manager:</p>
+<ul class="simple">
+<li><p>Versal UART0</p></li>
+<li><p>Versal UART1 &amp;</p></li>
+<li><p>System Controller UART</p></li>
+</ul>
+<p>Connect a USB-C cable to the USB-UART connector. In a terminal emulator, connect to Versal UART0 using the following settings:</p>
+<ul class="simple">
+<li><p>Baud Rate: 115200</p></li>
+<li><p>Data: 8 bit</p></li>
+<li><p>Parity: None</p></li>
+<li><p>Stop: 1 bit</p></li>
+<li><p>Flow Control: None</p></li>
+</ul>
+</section>
+<section id="flash-the-sd-card">
+<h3>Flash the SD Card<a class="headerlink" href="#flash-the-sd-card" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Download the 2023.2 Pre-Built Package from <a href="https://github.com/Xilinx/vck190-ethernet-trd">TRD Home Page </a> , unzip and save it on your computer.</p></li>
+<li><p>Navigate to the directory containing the prebuilt images <code class="docutils literal notranslate"><span class="pre">../vck190_ethernet_trd_prebuilt_2023.2</span></code></p></li>
+<li><p>Connect the microSD to your computer.</p></li>
+<li><p>Preparing the SD card, there are many options to format the SD Card in the windows tool. But, always format with FAT32 option. Use the SD Card Formatter tool to format the SD card <a href="https://www.sdcard.org/downloads/formatter_4/">SD Card Formatter </a></p></li>
+</ul>
+<p><img alt="formatter" src="../../../_images/sd-card-format.png" />.</p>
+<ul class="simple">
+<li><p>Copy <code class="docutils literal notranslate"><span class="pre">BOOT.BIN</span> <span class="pre">,</span> <span class="pre">rootfs.cpio.gz.uboot</span> <span class="pre">,</span> <span class="pre">Image</span> <span class="pre">and</span> <span class="pre">boot.scr</span></code> to microSD card.</p></li>
+<li><p>Eject the SD card from your computer.</p></li>
+<li><p>Connect the microSD card to the Board.</p></li>
+</ul>
+</section>
+<section id="sd-boot-mode">
+<h3>SD Boot mode:<a class="headerlink" href="#sd-boot-mode" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Power on the board in SD boot mode.</p></li>
+</ul>
+</section>
+<section id="gt-reference-clocks">
+<h3>GT Reference clocks<a class="headerlink" href="#gt-reference-clocks" title="Link to this heading">¶</a></h3>
+<p>The GT Reference clocks required for the design are configured by the IDT drivers.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>NOTE:</strong> Board UI is not required from 2022.1 release.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="run-host-and-vck190-applications">
+<h3>Run Host and VCK190 applications<a class="headerlink" href="#run-host-and-vck190-applications" title="Link to this heading">¶</a></h3>
+<p>Once the host and VCK190 are booted, set up an IP address for each ethernet port and make sure the Ethernet link is established using ping. Do not proceed until you are able to ping each interface.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="n">ifconfig</span> <span class="o">&lt;</span><span class="n">interface_name</span><span class="o">&gt;</span> <span class="n">down</span>	
+<span class="o">&gt;</span><span class="n">ifconfig</span> <span class="o">&lt;</span><span class="n">interface_name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">ip_address</span><span class="o">&gt;</span> <span class="n">up</span>
+</pre></div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>NOTE:</strong> While making the interface up, make sure a valid IP address is set for the interface.</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+<section id="iperf-commands">
+<h2>Iperf Commands<a class="headerlink" href="#iperf-commands" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>NOTE:</strong> The performance on 10G/25G interfaces with Linux stack in the data path is limited by the CPU processing power. Hence performance cannot be expected to meet line rate. There are alternatives to reduce the load on the processors by offloading SW functions to PL or bypassing Linux stack. The intention of this reference is to establish a working solution with a data plane driver, including PTP functionality.</p></li>
+</ul>
+</div></blockquote>
+<section id="tcp-tx">
+<h3>TCP TX<a class="headerlink" href="#tcp-tx" title="Link to this heading">¶</a></h3>
+<p><strong>Link Patner (Host NIC):</strong></p>
+<p>Execute the following command to start two threads of iperf3 server</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">iperf3</span> <span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">port_no_x</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">i</span> <span class="mi">60</span> <span class="o">&amp;</span>  
+<span class="n">iperf3</span> <span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">port_no_y</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">i</span> <span class="mi">60</span> <span class="o">&amp;</span>   
+</pre></div>
+</div>
+<p><strong>Board:</strong></p>
+<p>Execute the following command to start iperf3 client, this will start two threads of iperf traffic.</p>
+<p><strong>MTU 1500:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">taskset</span> <span class="o">-</span><span class="n">c</span> <span class="mi">1</span> <span class="n">iperf3</span> <span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="n">Link</span><span class="o">-</span><span class="n">partner</span><span class="o">-</span><span class="n">IP</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">T</span> <span class="n">s1</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">port_no_x</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span> <span class="o">-</span><span class="n">i</span> <span class="mi">60</span> <span class="o">-</span><span class="n">b</span> <span class="mi">2500</span><span class="n">M</span> <span class="o">&amp;</span>
+<span class="n">taskset</span> <span class="o">-</span><span class="n">c</span> <span class="mi">1</span> <span class="n">iperf3</span> <span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="n">Link</span><span class="o">-</span><span class="n">partner</span><span class="o">-</span><span class="n">IP</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">T</span> <span class="n">s2</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">port_no_y</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span> <span class="o">-</span><span class="n">i</span> <span class="mi">60</span> <span class="o">-</span><span class="n">b</span> <span class="mi">2500</span><span class="n">M</span> <span class="o">&amp;</span>
+</pre></div>
+</div>
+<p><strong>MTU 9000:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">taskset</span> <span class="o">-</span><span class="n">c</span> <span class="mi">1</span> <span class="n">iperf3</span> <span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="n">Link</span><span class="o">-</span><span class="n">partner</span><span class="o">-</span><span class="n">IP</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">T</span> <span class="n">s1</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">port_no_x</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span> <span class="o">-</span><span class="n">i</span> <span class="mi">60</span> <span class="o">-</span><span class="n">b</span> <span class="mi">5000</span><span class="n">M</span> <span class="o">&amp;</span>
+<span class="n">taskset</span> <span class="o">-</span><span class="n">c</span> <span class="mi">1</span> <span class="n">iperf3</span> <span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="n">Link</span><span class="o">-</span><span class="n">partner</span><span class="o">-</span><span class="n">IP</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">T</span> <span class="n">s2</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">port_no_y</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span> <span class="o">-</span><span class="n">i</span> <span class="mi">60</span> <span class="o">-</span><span class="n">b</span> <span class="mi">5000</span><span class="n">M</span> <span class="o">&amp;</span>
+</pre></div>
+</div>
+</section>
+<section id="udp-tx">
+<h3>UDP TX<a class="headerlink" href="#udp-tx" title="Link to this heading">¶</a></h3>
+<p><strong>Link Patner (Host NIC):</strong></p>
+<p>Execute the following command to start two threads of iperf3 server</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">iperf3</span> <span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">port_no_x</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">i</span> <span class="mi">60</span> <span class="o">&amp;</span>  
+<span class="n">iperf3</span> <span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">port_no_y</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">i</span> <span class="mi">60</span> <span class="o">&amp;</span>   
+</pre></div>
+</div>
+<p><strong>Board:</strong></p>
+<p>Execute the following command to start iperf3 client, this will start iperf traffic on two processors.</p>
+<p><strong>MTU 1500:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">taskset</span> <span class="o">-</span><span class="n">c</span> <span class="mi">0</span> <span class="n">iperf3</span> <span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="n">Link</span><span class="o">-</span><span class="n">partner</span><span class="o">-</span><span class="n">IP</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">T</span> <span class="n">s1</span> <span class="o">-</span><span class="n">u</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">port_no_x</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span> <span class="o">-</span><span class="n">i</span> <span class="mi">60</span> <span class="o">-</span><span class="n">b</span> <span class="mi">2500</span><span class="n">M</span> <span class="o">&amp;</span>
+<span class="n">taskset</span> <span class="o">-</span><span class="n">c</span> <span class="mi">1</span> <span class="n">iperf3</span> <span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="n">Link</span><span class="o">-</span><span class="n">partner</span><span class="o">-</span><span class="n">IP</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">T</span> <span class="n">s2</span> <span class="o">-</span><span class="n">u</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">port_no_y</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span> <span class="o">-</span><span class="n">i</span> <span class="mi">60</span> <span class="o">-</span><span class="n">b</span> <span class="mi">2500</span><span class="n">M</span> <span class="o">&amp;</span>
+</pre></div>
+</div>
+<p><strong>MTU 9000:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">taskset</span> <span class="o">-</span><span class="n">c</span> <span class="mi">0</span> <span class="n">iperf3</span> <span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="n">Link</span><span class="o">-</span><span class="n">partner</span><span class="o">-</span><span class="n">IP</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">T</span> <span class="n">s1</span> <span class="o">-</span><span class="n">u</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">port_no_x</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span> <span class="o">-</span><span class="n">i</span> <span class="mi">60</span> <span class="o">-</span><span class="n">b</span> <span class="mi">5000</span><span class="n">M</span> <span class="o">&amp;</span>
+<span class="n">taskset</span> <span class="o">-</span><span class="n">c</span> <span class="mi">1</span> <span class="n">iperf3</span> <span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="n">Link</span><span class="o">-</span><span class="n">partner</span><span class="o">-</span><span class="n">IP</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">T</span> <span class="n">s2</span> <span class="o">-</span><span class="n">u</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">port_no_y</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span> <span class="o">-</span><span class="n">i</span> <span class="mi">60</span> <span class="o">-</span><span class="n">b</span> <span class="mi">5000</span><span class="n">M</span> <span class="o">&amp;</span>
+</pre></div>
+</div>
+</section>
+<section id="tcp-rx">
+<h3>TCP RX<a class="headerlink" href="#tcp-rx" title="Link to this heading">¶</a></h3>
+<p><strong>Pre-requisites:</strong></p>
+<p>For Rx tests, run the following commands initially on the VCK190 board</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ifconfig</span> <span class="o">&lt;</span><span class="n">interface</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span> <span class="n">down</span>
+<span class="n">ethtool</span> <span class="o">-</span><span class="n">G</span> <span class="o">&lt;</span><span class="n">interface</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span> <span class="n">rx</span> <span class="mi">1024</span>
+<span class="n">ethtool</span> <span class="o">-</span><span class="n">C</span> <span class="o">&lt;</span><span class="n">interface</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span> <span class="n">tx</span><span class="o">-</span><span class="n">frames</span> <span class="mi">24</span> <span class="n">rx</span><span class="o">-</span><span class="n">frames</span> <span class="mi">24</span>
+<span class="n">ifconfig</span> <span class="o">&lt;</span><span class="n">interface</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">ip_address</span><span class="o">&gt;</span> <span class="n">up</span>   
+</pre></div>
+</div>
+<p><strong>Board:</strong></p>
+<p>Execute the following command to start iperf3 server on two processors</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">taskset</span> <span class="o">-</span><span class="n">c</span> <span class="mi">0</span> <span class="n">iperf3</span> <span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">port_no_x</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">i</span> <span class="mi">60</span> <span class="o">&amp;</span>  
+<span class="n">taskset</span> <span class="o">-</span><span class="n">c</span> <span class="mi">1</span> <span class="n">iperf3</span> <span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">port_no_y</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">i</span> <span class="mi">60</span> <span class="o">&amp;</span>   
+</pre></div>
+</div>
+<p><strong>Link Partner (Host NIC):</strong></p>
+<p>Execute the following command to start iperf3 client, this will start two threads of iperf traffic.</p>
+<p><strong>MTU 1500:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">iperf3</span> <span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="n">Link</span><span class="o">-</span><span class="n">partner</span><span class="o">-</span><span class="n">IP</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">T</span> <span class="n">s1</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">port_no_x</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span> <span class="o">-</span><span class="n">i</span> <span class="mi">60</span> <span class="o">-</span><span class="n">b</span> <span class="mi">2500</span><span class="n">M</span> <span class="o">-</span><span class="n">Z</span> <span class="o">-</span><span class="n">w</span> <span class="mi">256</span><span class="n">k</span> <span class="o">&amp;</span>
+<span class="n">iperf3</span> <span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="n">Link</span><span class="o">-</span><span class="n">partner</span><span class="o">-</span><span class="n">IP</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">T</span> <span class="n">s2</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">port_no_y</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span> <span class="o">-</span><span class="n">i</span> <span class="mi">60</span> <span class="o">-</span><span class="n">b</span> <span class="mi">2500</span><span class="n">M</span> <span class="o">-</span><span class="n">Z</span> <span class="o">-</span><span class="n">w</span> <span class="mi">256</span><span class="n">k</span> <span class="o">&amp;</span>
+</pre></div>
+</div>
+<p><strong>MTU 9000:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">iperf3</span> <span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="n">Link</span><span class="o">-</span><span class="n">partner</span><span class="o">-</span><span class="n">IP</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">T</span> <span class="n">s1</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">port_no_x</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span> <span class="o">-</span><span class="n">i</span> <span class="mi">60</span> <span class="o">-</span><span class="n">b</span> <span class="mi">5000</span><span class="n">M</span> <span class="o">-</span><span class="n">Z</span> <span class="o">-</span><span class="n">w</span> <span class="mi">256</span><span class="n">k</span> <span class="o">&amp;</span>
+<span class="n">iperf3</span> <span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="n">Link</span><span class="o">-</span><span class="n">partner</span><span class="o">-</span><span class="n">IP</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">T</span> <span class="n">s2</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">port_no_y</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span> <span class="o">-</span><span class="n">i</span> <span class="mi">60</span> <span class="o">-</span><span class="n">b</span> <span class="mi">5000</span><span class="n">M</span> <span class="o">-</span><span class="n">Z</span> <span class="o">-</span><span class="n">w</span> <span class="mi">256</span><span class="n">k</span> <span class="o">&amp;</span>
+</pre></div>
+</div>
+</section>
+<section id="udp-rx">
+<h3>UDP RX<a class="headerlink" href="#udp-rx" title="Link to this heading">¶</a></h3>
+<p><strong>Board:</strong></p>
+<p>Execute the following command to start iperf3 server on two processors</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">taskset</span> <span class="o">-</span><span class="n">c</span> <span class="mi">0</span> <span class="n">iperf3</span> <span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">port_no_x</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">i</span> <span class="mi">60</span> <span class="o">&amp;</span>  
+<span class="n">taskset</span> <span class="o">-</span><span class="n">c</span> <span class="mi">1</span> <span class="n">iperf3</span> <span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">port_no_y</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">i</span> <span class="mi">60</span> <span class="o">&amp;</span>   
+</pre></div>
+</div>
+<p><strong>Link Partner (Host NIC):</strong></p>
+<p>Execute the following command to start iperf3 client, this will start two threads of iperf traffic.</p>
+<p><strong>MTU 1500:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">iperf3</span> <span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="n">Link</span><span class="o">-</span><span class="n">partner</span><span class="o">-</span><span class="n">IP</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">T</span> <span class="n">s1</span> <span class="o">-</span><span class="n">u</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">port_no_x</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span> <span class="o">-</span><span class="n">i</span> <span class="mi">60</span> <span class="o">-</span><span class="n">b</span> <span class="mi">2500</span><span class="n">M</span> <span class="o">-</span><span class="n">Z</span> <span class="o">&amp;</span>
+<span class="n">iperf3</span> <span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="n">Link</span><span class="o">-</span><span class="n">partner</span><span class="o">-</span><span class="n">IP</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">T</span> <span class="n">s2</span> <span class="o">-</span><span class="n">u</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">port_no_y</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span> <span class="o">-</span><span class="n">i</span> <span class="mi">60</span> <span class="o">-</span><span class="n">b</span> <span class="mi">2500</span><span class="n">M</span> <span class="o">-</span><span class="n">Z</span> <span class="o">&amp;</span>
+</pre></div>
+</div>
+<p><strong>MTU 9000:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">iperf3</span> <span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="n">Link</span><span class="o">-</span><span class="n">partner</span><span class="o">-</span><span class="n">IP</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">T</span> <span class="n">s1</span> <span class="o">-</span><span class="n">u</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">port_no_x</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span> <span class="o">-</span><span class="n">i</span> <span class="mi">60</span> <span class="o">-</span><span class="n">b</span> <span class="mi">5000</span><span class="n">M</span> <span class="o">-</span><span class="n">Z</span> <span class="o">&amp;</span>
+<span class="n">iperf3</span> <span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="n">Link</span><span class="o">-</span><span class="n">partner</span><span class="o">-</span><span class="n">IP</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">T</span> <span class="n">s2</span> <span class="o">-</span><span class="n">u</span> <span class="o">-</span><span class="n">p</span> <span class="o">&lt;</span><span class="n">port_no_y</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span> <span class="o">-</span><span class="n">i</span> <span class="mi">60</span> <span class="o">-</span><span class="n">b</span> <span class="mi">5000</span><span class="n">M</span> <span class="o">-</span><span class="n">Z</span> <span class="o">&amp;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="ptp-commands">
+<h2>PTP commands<a class="headerlink" href="#ptp-commands" title="Link to this heading">¶</a></h2>
+<section id="two-step-ptp">
+<h3>Two Step PTP<a class="headerlink" href="#two-step-ptp" title="Link to this heading">¶</a></h3>
+<p>Run ptp4l in master mode:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Link</span> <span class="n">partner</span> <span class="o">&gt;</span> <span class="n">ptp4l</span> <span class="o">-</span><span class="n">i</span> <span class="o">&lt;</span><span class="n">interface_name</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">m</span> <span class="o">&amp;</span>
+
+<span class="ow">or</span> <span class="n">vice</span> <span class="n">versa</span>
+</pre></div>
+</div>
+<p><strong>ptp4l master side log</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Link</span> <span class="n">partner</span> <span class="o">&gt;</span>  <span class="n">ptp4l</span> <span class="o">-</span><span class="n">i</span> <span class="n">eth0</span> <span class="o">-</span><span class="n">m</span> <span class="o">&amp;</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">18601.779</span><span class="p">]:</span> <span class="n">selected</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ptp1</span> <span class="k">as</span> <span class="n">PTP</span> <span class="n">clock</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">18601.780</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">1</span><span class="p">:</span> <span class="n">INITIALIZING</span> <span class="n">to</span> <span class="n">LISTENING</span> <span class="n">on</span> <span class="n">INIT_COMPLETE</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">18601.780</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">0</span><span class="p">:</span> <span class="n">INITIALIZING</span> <span class="n">to</span> <span class="n">LISTENING</span> <span class="n">on</span> <span class="n">INIT_COMPLETE</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">18601.780</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">0</span><span class="p">:</span> <span class="n">INITIALIZING</span> <span class="n">to</span> <span class="n">LISTENING</span> <span class="n">on</span> <span class="n">INIT_COMPLETE</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">18609.021</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">1</span><span class="p">:</span> <span class="n">LISTENING</span> <span class="n">to</span> <span class="n">MASTER</span> <span class="n">on</span> <span class="n">ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">18609.021</span><span class="p">]:</span> <span class="n">selected</span> <span class="n">local</span> <span class="n">clock</span> <span class="mi">000</span><span class="n">f53</span><span class="o">.</span><span class="n">fffe</span><span class="mf">.9</span><span class="n">b2dd0</span> <span class="k">as</span> <span class="n">best</span> <span class="n">master</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">18609.021</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">1</span><span class="p">:</span> <span class="n">assuming</span> <span class="n">the</span> <span class="n">grand</span> <span class="n">master</span> <span class="n">role</span>
+</pre></div>
+</div>
+<p>Run ptp4l in slave mode:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vck190</span> <span class="o">&gt;</span> <span class="n">ptp4l</span> <span class="o">-</span><span class="n">i</span> <span class="o">&lt;</span><span class="n">interface_name</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">m</span> <span class="o">-</span><span class="n">s</span> <span class="o">&amp;</span>
+ 
+<span class="ow">or</span> <span class="n">vice</span> <span class="n">versa</span>
+</pre></div>
+</div>
+<p><strong>ptp4l frequency synchronization slave side log</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vck190</span> <span class="o">&gt;</span> <span class="n">ptp4l</span> <span class="o">-</span><span class="n">i</span> <span class="n">eth0</span> <span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="n">m</span> <span class="o">&amp;</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9678.643</span><span class="p">]:</span> <span class="n">selected</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ptp1</span> <span class="k">as</span> <span class="n">PTP</span> <span class="n">clock</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9678.657</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">1</span><span class="p">:</span> <span class="n">INITIALIZING</span> <span class="n">to</span> <span class="n">LISTENING</span> <span class="n">on</span> <span class="n">INIT_COMPLETE</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9678.657</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">0</span><span class="p">:</span> <span class="n">INITIALIZING</span> <span class="n">to</span> <span class="n">LISTENING</span> <span class="n">on</span> <span class="n">INIT_COMPLETE</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9682.932</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">1</span><span class="p">:</span> <span class="n">new</span> <span class="n">foreign</span> <span class="n">master</span> <span class="mi">000</span><span class="n">f53</span><span class="o">.</span><span class="n">fffe</span><span class="mf">.9</span><span class="n">b2dd0</span><span class="o">-</span><span class="mi">1</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9685.824</span><span class="p">]:</span> <span class="n">selected</span> <span class="n">local</span> <span class="n">clock</span> <span class="mi">000</span><span class="n">a35</span><span class="o">.</span><span class="n">fffe</span><span class="mf">.000000</span> <span class="k">as</span> <span class="n">best</span> <span class="n">master</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9686.932</span><span class="p">]:</span> <span class="n">selected</span> <span class="n">best</span> <span class="n">master</span> <span class="n">clock</span> <span class="mi">000</span><span class="n">f53</span><span class="o">.</span><span class="n">fffe</span><span class="mf">.9</span><span class="n">b2dd0</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9686.932</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">1</span><span class="p">:</span> <span class="n">LISTENING</span> <span class="n">to</span> <span class="n">UNCALIBRATED</span> <span class="n">on</span> <span class="n">RS_SLAVE</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9688.932</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span> <span class="o">-</span><span class="mi">12219001336</span> <span class="n">s0</span> <span class="n">freq</span>      <span class="o">+</span><span class="mi">0</span> <span class="n">path</span> <span class="n">delay</span>       <span class="o">-</span><span class="mi">90</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9689.932</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span> <span class="o">-</span><span class="mi">12219000514</span> <span class="n">s1</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">822</span> <span class="n">path</span> <span class="n">delay</span>      <span class="o">-</span><span class="mi">164</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9690.932</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>        <span class="o">-</span><span class="mi">40</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">782</span> <span class="n">path</span> <span class="n">delay</span>      <span class="o">-</span><span class="mi">164</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9690.932</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">1</span><span class="p">:</span> <span class="n">UNCALIBRATED</span> <span class="n">to</span> <span class="n">SLAVE</span> <span class="n">on</span> <span class="n">MASTER_CLOCK_SELECTED</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9691.932</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>        <span class="o">-</span><span class="mi">78</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">732</span> <span class="n">path</span> <span class="n">delay</span>      <span class="o">-</span><span class="mi">164</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9692.932</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>       <span class="o">-</span><span class="mi">201</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">586</span> <span class="n">path</span> <span class="n">delay</span>       <span class="o">-</span><span class="mi">27</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9693.932</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>        <span class="o">-</span><span class="mi">63</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">663</span> <span class="n">path</span> <span class="n">delay</span>        <span class="o">-</span><span class="mi">8</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9694.932</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="mi">11</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">718</span> <span class="n">path</span> <span class="n">delay</span>        <span class="o">-</span><span class="mi">1</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9695.932</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="mi">36</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">747</span> <span class="n">path</span> <span class="n">delay</span>        <span class="o">-</span><span class="mi">1</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9696.932</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="mi">23</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">744</span> <span class="n">path</span> <span class="n">delay</span>        <span class="mi">10</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9697.932</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="mi">23</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">751</span> <span class="n">path</span> <span class="n">delay</span>        <span class="mi">10</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9698.932</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">6</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">741</span> <span class="n">path</span> <span class="n">delay</span>        <span class="mi">22</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9699.932</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">0</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">737</span> <span class="n">path</span> <span class="n">delay</span>        <span class="mi">28</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9700.932</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">8</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">745</span> <span class="n">path</span> <span class="n">delay</span>        <span class="mi">28</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9701.932</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="o">-</span><span class="mi">4</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">735</span> <span class="n">path</span> <span class="n">delay</span>        <span class="mi">38</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9702.932</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">2</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">740</span> <span class="n">path</span> <span class="n">delay</span>        <span class="mi">37</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9703.932</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">7</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">746</span> <span class="n">path</span> <span class="n">delay</span>        <span class="mi">37</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9704.932</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">3</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">744</span> <span class="n">path</span> <span class="n">delay</span>        <span class="mi">38</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9705.932</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">6</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">748</span> <span class="n">path</span> <span class="n">delay</span>        <span class="mi">38</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9706.932</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="o">-</span><span class="mi">1</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">743</span> <span class="n">path</span> <span class="n">delay</span>        <span class="mi">39</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9707.932</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="o">-</span><span class="mi">2</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">741</span> <span class="n">path</span> <span class="n">delay</span>        <span class="mi">39</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9708.932</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">2</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">745</span> <span class="n">path</span> <span class="n">delay</span>        <span class="mi">39</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">9709.932</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">2</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">745</span> <span class="n">path</span> <span class="n">delay</span>        <span class="mi">39</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>Note:</strong> For more details refer <a class="reference external" href="https://linuxptp.sourceforge.net/">Linux PTP Project source files and Documentation</a></p>
+</div></blockquote>
+</section>
+<section id="one-step-ptp">
+<h3>One Step PTP<a class="headerlink" href="#one-step-ptp" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>NOTE:</strong> Another vck190 board with Xilinx PHC is used as Link partner to test the one step PTP use cases.</p></li>
+</ul>
+</div></blockquote>
+<p><strong>PTP with 1 step End-to-end (E2E)</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Link</span> <span class="n">partner</span><span class="o">&gt;</span> <span class="n">ptp4l</span> <span class="o">-</span><span class="n">i</span> <span class="o">&lt;</span><span class="n">interface_name</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">m</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">default_onestep</span><span class="o">.</span><span class="n">cfg</span> <span class="o">&amp;</span>
+ 
+<span class="n">VCK190</span><span class="o">&gt;</span> <span class="n">ptp4l</span> <span class="o">-</span><span class="n">i</span> <span class="n">eth0</span> <span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="n">m</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">default_onestep</span><span class="o">.</span><span class="n">cfg</span> <span class="o">&amp;</span>
+ 
+<span class="ow">or</span> <span class="n">vice</span> <span class="n">versa</span>
+</pre></div>
+</div>
+<p><strong>ptp4l master side log</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Link</span> <span class="n">partner</span> <span class="o">&gt;</span> <span class="n">ptp4l</span> <span class="o">-</span><span class="n">i</span> <span class="n">eth0</span> <span class="o">-</span><span class="n">m</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">default_onestep</span><span class="o">.</span><span class="n">cfg</span> <span class="o">&amp;</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">185.138</span><span class="p">]:</span> <span class="n">selected</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ptp1</span> <span class="k">as</span> <span class="n">PTP</span> <span class="n">clock</span>
+<span class="n">xilinx</span><span class="o">-</span><span class="n">vck190</span><span class="o">-</span><span class="mi">20232</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">petalinux</span><span class="c1"># ptp4l[185.148]: port 1: INITIALIZING to LISTENING on INIT_COMPLETE</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">185.149</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">0</span><span class="p">:</span> <span class="n">INITIALIZING</span> <span class="n">to</span> <span class="n">LISTENING</span> <span class="n">on</span> <span class="n">INIT_COMPLETE</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">193.041</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">1</span><span class="p">:</span> <span class="n">LISTENING</span> <span class="n">to</span> <span class="n">MASTER</span> <span class="n">on</span> <span class="n">ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">193.041</span><span class="p">]:</span> <span class="n">selected</span> <span class="n">local</span> <span class="n">clock</span> <span class="mi">000</span><span class="n">b35</span><span class="o">.</span><span class="n">fffe</span><span class="mf">.000000</span> <span class="k">as</span> <span class="n">best</span> <span class="n">master</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">193.041</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">1</span><span class="p">:</span> <span class="n">assuming</span> <span class="n">the</span> <span class="n">grand</span> <span class="n">master</span> <span class="n">role</span>
+</pre></div>
+</div>
+<p><strong>ptp4l frequency synchronization slave side log</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vck190</span> <span class="o">&gt;</span> <span class="n">ptp4l</span> <span class="o">-</span><span class="n">i</span> <span class="n">eth0</span> <span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="n">m</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">default_onestep</span><span class="o">.</span><span class="n">cfg</span> <span class="o">&amp;</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">189.909</span><span class="p">]:</span> <span class="n">selected</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ptp1</span> <span class="k">as</span> <span class="n">PTP</span> <span class="n">clock</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">189.917</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">1</span><span class="p">:</span> <span class="n">INITIALIZING</span> <span class="n">to</span> <span class="n">LISTENING</span> <span class="n">on</span> <span class="n">INIT_COMPLETE</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">189.918</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">0</span><span class="p">:</span> <span class="n">INITIALIZING</span> <span class="n">to</span> <span class="n">LISTENING</span> <span class="n">on</span> <span class="n">INIT_COMPLETE</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">196.071</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">1</span><span class="p">:</span> <span class="n">new</span> <span class="n">foreign</span> <span class="n">master</span> <span class="mi">000</span><span class="n">b35</span><span class="o">.</span><span class="n">fffe</span><span class="mf">.000000</span><span class="o">-</span><span class="mi">1</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">197.649</span><span class="p">]:</span> <span class="n">selected</span> <span class="n">local</span> <span class="n">clock</span> <span class="mi">000</span><span class="n">a35</span><span class="o">.</span><span class="n">fffe</span><span class="mf">.000000</span> <span class="k">as</span> <span class="n">best</span> <span class="n">master</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">200.071</span><span class="p">]:</span> <span class="n">selected</span> <span class="n">best</span> <span class="n">master</span> <span class="n">clock</span> <span class="mi">000</span><span class="n">b35</span><span class="o">.</span><span class="n">fffe</span><span class="mf">.000000</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">200.071</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">1</span><span class="p">:</span> <span class="n">LISTENING</span> <span class="n">to</span> <span class="n">UNCALIBRATED</span> <span class="n">on</span> <span class="n">RS_SLAVE</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">202.070</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span> <span class="o">-</span><span class="mi">1695996497901908938</span> <span class="n">s0</span> <span class="n">freq</span>      <span class="o">+</span><span class="mi">0</span> <span class="n">path</span> <span class="n">delay</span>        <span class="mi">78</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">203.070</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span> <span class="o">-</span><span class="mi">1695996497901908746</span> <span class="n">s1</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">192</span> <span class="n">path</span> <span class="n">delay</span>        <span class="mi">78</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">204.070</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="mi">39</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">231</span> <span class="n">path</span> <span class="n">delay</span>        <span class="mi">78</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">204.071</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">1</span><span class="p">:</span> <span class="n">UNCALIBRATED</span> <span class="n">to</span> <span class="n">SLAVE</span> <span class="n">on</span> <span class="n">MASTER_CLOCK_SELECTED</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">205.070</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="o">-</span><span class="mi">1</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">203</span> <span class="n">path</span> <span class="n">delay</span>        <span class="mi">78</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">206.070</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>        <span class="o">-</span><span class="mi">59</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">144</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">121</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">207.070</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>        <span class="o">-</span><span class="mi">19</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">167</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">115</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">208.070</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="mi">27</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">207</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">110</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">209.071</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">7</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">195</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">115</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">210.071</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">3</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">193</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">115</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">211.070</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="o">-</span><span class="mi">6</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">185</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">121</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">212.071</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">3</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">192</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">119</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">213.071</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="o">-</span><span class="mi">2</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">188</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">120</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">214.071</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">5</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">195</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">120</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">215.071</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">2</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">193</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">120</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">216.071</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">0</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">192</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">120</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">217.071</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">2</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">194</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">120</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">218.071</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="o">-</span><span class="mi">2</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">190</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">121</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">219.071</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="o">-</span><span class="mi">1</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">191</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">121</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">220.071</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">1</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">192</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">120</span>
+</pre></div>
+</div>
+<p><strong>PTP Peer-to-peer (P2P) with 1 step Sync</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Link</span> <span class="n">partner</span><span class="o">&gt;</span> <span class="n">ptp4l</span> <span class="o">-</span><span class="n">i</span> <span class="o">&lt;</span><span class="n">interface_name</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">m</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">default_onestep</span><span class="o">.</span><span class="n">cfg</span> <span class="o">-</span><span class="n">P</span> <span class="o">&amp;</span>
+ 
+<span class="n">VCK190</span><span class="o">&gt;</span> <span class="n">ptp4l</span> <span class="o">-</span><span class="n">i</span> <span class="n">eth0</span> <span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="n">m</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">default_onestep</span><span class="o">.</span><span class="n">cfg</span> <span class="o">-</span><span class="n">P</span> <span class="o">&amp;</span>
+ 
+<span class="ow">or</span> <span class="n">vice</span> <span class="n">versa</span>
+</pre></div>
+</div>
+<p><strong>ptp4l master side log</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Link</span> <span class="n">partner</span> <span class="o">&gt;</span> <span class="n">ptp4l</span> <span class="o">-</span><span class="n">i</span> <span class="n">eth0</span> <span class="o">-</span><span class="n">m</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">default_onestep</span><span class="o">.</span><span class="n">cfg</span> <span class="o">-</span><span class="n">P</span> <span class="o">&amp;</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">396.343</span><span class="p">]:</span> <span class="n">selected</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ptp1</span> <span class="k">as</span> <span class="n">PTP</span> <span class="n">clock</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">396.353</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">1</span><span class="p">:</span> <span class="n">INITIALIZING</span> <span class="n">to</span> <span class="n">LISTENING</span> <span class="n">on</span> <span class="n">INIT_COMPLETE</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">396.353</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">0</span><span class="p">:</span> <span class="n">INITIALIZING</span> <span class="n">to</span> <span class="n">LISTENING</span> <span class="n">on</span> <span class="n">INIT_COMPLETE</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">403.833</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">1</span><span class="p">:</span> <span class="n">LISTENING</span> <span class="n">to</span> <span class="n">MASTER</span> <span class="n">on</span> <span class="n">ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">403.833</span><span class="p">]:</span> <span class="n">selected</span> <span class="n">local</span> <span class="n">clock</span> <span class="mi">000</span><span class="n">b35</span><span class="o">.</span><span class="n">fffe</span><span class="mf">.000000</span> <span class="k">as</span> <span class="n">best</span> <span class="n">master</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">403.833</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">1</span><span class="p">:</span> <span class="n">assuming</span> <span class="n">the</span> <span class="n">grand</span> <span class="n">master</span> <span class="n">role</span>
+</pre></div>
+</div>
+<p><strong>ptp4l frequency synchronization slave side log</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vck190</span> <span class="o">&gt;</span> <span class="n">ptp4l</span> <span class="o">-</span><span class="n">i</span> <span class="n">eth0</span> <span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="n">m</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">default_onestep</span><span class="o">.</span><span class="n">cfg</span> <span class="o">-</span><span class="n">P</span> <span class="o">&amp;</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">412.566</span><span class="p">]:</span> <span class="n">selected</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ptp1</span> <span class="k">as</span> <span class="n">PTP</span> <span class="n">clock</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">412.577</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">1</span><span class="p">:</span> <span class="n">INITIALIZING</span> <span class="n">to</span> <span class="n">LISTENING</span> <span class="n">on</span> <span class="n">INIT_COMPLETE</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">412.577</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">0</span><span class="p">:</span> <span class="n">INITIALIZING</span> <span class="n">to</span> <span class="n">LISTENING</span> <span class="n">on</span> <span class="n">INIT_COMPLETE</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">412.863</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">1</span><span class="p">:</span> <span class="n">new</span> <span class="n">foreign</span> <span class="n">master</span> <span class="mi">000</span><span class="n">b35</span><span class="o">.</span><span class="n">fffe</span><span class="mf">.000000</span><span class="o">-</span><span class="mi">1</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">416.863</span><span class="p">]:</span> <span class="n">selected</span> <span class="n">best</span> <span class="n">master</span> <span class="n">clock</span> <span class="mi">000</span><span class="n">b35</span><span class="o">.</span><span class="n">fffe</span><span class="mf">.000000</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">416.863</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">1</span><span class="p">:</span> <span class="n">LISTENING</span> <span class="n">to</span> <span class="n">UNCALIBRATED</span> <span class="n">on</span> <span class="n">RS_SLAVE</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">417.862</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="mi">83</span> <span class="n">s0</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">193</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">120</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">418.862</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="mi">85</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">195</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">120</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">418.862</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">1</span><span class="p">:</span> <span class="n">UNCALIBRATED</span> <span class="n">to</span> <span class="n">SLAVE</span> <span class="n">on</span> <span class="n">MASTER_CLOCK_SELECTED</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">419.862</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="mi">84</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">279</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">120</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">420.862</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="o">-</span><span class="mi">3</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">217</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">120</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">421.862</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>        <span class="o">-</span><span class="mi">19</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">200</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">120</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">422.862</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>        <span class="o">-</span><span class="mi">24</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">190</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">120</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">423.863</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>        <span class="o">-</span><span class="mi">19</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">187</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">120</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">424.863</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>        <span class="o">-</span><span class="mi">11</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">190</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">120</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">425.863</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="o">-</span><span class="mi">5</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">192</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">120</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">426.863</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="o">-</span><span class="mi">3</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">193</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">120</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">427.863</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="o">-</span><span class="mi">1</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">194</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">120</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">428.863</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">0</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">195</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">120</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">429.863</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="o">-</span><span class="mi">1</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">194</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">120</span>
+</pre></div>
+</div>
+<p><strong>PTP P2P with 1 step Sync and 1 step Pdelay Response</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Link</span> <span class="n">partner</span><span class="o">&gt;</span> <span class="n">ptp4l</span> <span class="o">-</span><span class="n">i</span> <span class="o">&lt;</span><span class="n">interface_name</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">m</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">default_onestepp2p</span><span class="o">.</span><span class="n">cfg</span> <span class="o">&amp;</span>
+ 
+<span class="n">VCK190</span><span class="o">&gt;</span> <span class="n">ptp4l</span> <span class="o">-</span><span class="n">i</span> <span class="n">eth0</span> <span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="n">m</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">default_onestepp2p</span><span class="o">.</span><span class="n">cfg</span> <span class="o">&amp;</span>
+ 
+<span class="ow">or</span> <span class="n">vice</span> <span class="n">versa</span>
+</pre></div>
+</div>
+<p><strong>ptp4l master side log</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Link</span> <span class="n">partner</span> <span class="o">&gt;</span> <span class="n">ptp4l</span> <span class="o">-</span><span class="n">i</span> <span class="n">eth0</span>  <span class="o">-</span><span class="n">m</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">default_onestepp2p</span><span class="o">.</span><span class="n">cfg</span> <span class="o">&amp;</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77665.163</span><span class="p">]:</span> <span class="n">selected</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ptp1</span> <span class="k">as</span> <span class="n">PTP</span> <span class="n">clock</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77665.173</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">1</span><span class="p">:</span> <span class="n">INITIALIZING</span> <span class="n">to</span> <span class="n">LISTENING</span> <span class="n">on</span> <span class="n">INIT_COMPLETE</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77665.173</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">0</span><span class="p">:</span> <span class="n">INITIALIZING</span> <span class="n">to</span> <span class="n">LISTENING</span> <span class="n">on</span> <span class="n">INIT_COMPLETE</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77671.630</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">1</span><span class="p">:</span> <span class="n">LISTENING</span> <span class="n">to</span> <span class="n">MASTER</span> <span class="n">on</span> <span class="n">ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77671.630</span><span class="p">]:</span> <span class="n">selected</span> <span class="n">local</span> <span class="n">clock</span> <span class="mi">000</span><span class="n">b35</span><span class="o">.</span><span class="n">fffe</span><span class="mf">.000000</span> <span class="k">as</span> <span class="n">best</span> <span class="n">master</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77671.630</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">1</span><span class="p">:</span> <span class="n">assuming</span> <span class="n">the</span> <span class="n">grand</span> <span class="n">master</span> <span class="n">role</span>
+</pre></div>
+</div>
+<p><strong>ptp4l frequency synchronization slave side log</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vck190</span> <span class="o">&gt;</span> <span class="n">ptp4l</span> <span class="o">-</span><span class="n">i</span> <span class="n">eth0</span> <span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="n">m</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">default_onestepp2p</span><span class="o">.</span><span class="n">cfg</span> <span class="o">&amp;</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77664.802</span><span class="p">]:</span> <span class="n">selected</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ptp1</span> <span class="k">as</span> <span class="n">PTP</span> <span class="n">clock</span>
+<span class="n">port</span> <span class="mi">1</span><span class="p">:</span> <span class="n">INITIALIZING</span> <span class="n">to</span> <span class="n">LISTENING</span> <span class="n">on</span> <span class="n">INIT_COMPLETE</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77664.813</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">0</span><span class="p">:</span> <span class="n">INITIALIZING</span> <span class="n">to</span> <span class="n">LISTENING</span> <span class="n">on</span> <span class="n">INIT_COMPLETE</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77666.799</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">1</span><span class="p">:</span> <span class="n">new</span> <span class="n">foreign</span> <span class="n">master</span> <span class="mi">000</span><span class="n">b35</span><span class="o">.</span><span class="n">fffe</span><span class="mf">.000000</span><span class="o">-</span><span class="mi">1</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77670.799</span><span class="p">]:</span> <span class="n">selected</span> <span class="n">best</span> <span class="n">master</span> <span class="n">clock</span> <span class="mi">000</span><span class="n">b35</span><span class="o">.</span><span class="n">fffe</span><span class="mf">.000000</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77670.799</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">1</span><span class="p">:</span> <span class="n">LISTENING</span> <span class="n">to</span> <span class="n">UNCALIBRATED</span> <span class="n">on</span> <span class="n">RS_SLAVE</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77671.798</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="mi">47</span> <span class="n">s0</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">171</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">201</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77672.798</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="mi">46</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">170</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">202</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77672.798</span><span class="p">]:</span> <span class="n">port</span> <span class="mi">1</span><span class="p">:</span> <span class="n">UNCALIBRATED</span> <span class="n">to</span> <span class="n">SLAVE</span> <span class="n">on</span> <span class="n">MASTER_CLOCK_SELECTED</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77673.798</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="mi">49</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">219</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">201</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77674.798</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">2</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">187</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">201</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77675.798</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>        <span class="o">-</span><span class="mi">14</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">171</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">201</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77676.798</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>        <span class="o">-</span><span class="mi">13</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">168</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">201</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77677.798</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="o">-</span><span class="mi">9</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">168</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">201</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77678.798</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="o">-</span><span class="mi">6</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">169</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">201</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77679.798</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="o">-</span><span class="mi">3</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">170</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">201</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77680.798</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="o">-</span><span class="mi">5</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">167</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">201</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77681.799</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">4</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">174</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">201</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77682.799</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">1</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">173</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">201</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77683.799</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">0</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">172</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">201</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77684.799</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="o">-</span><span class="mi">2</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">170</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">202</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77685.799</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">0</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">171</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">202</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77686.799</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">1</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">172</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">202</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77687.799</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">0</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">172</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">202</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77688.799</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>         <span class="o">-</span><span class="mi">2</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">170</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">202</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77689.799</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">4</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">175</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">202</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77690.799</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">1</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">173</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">202</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77691.799</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">0</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">172</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">202</span>
+<span class="n">ptp4l</span><span class="p">[</span><span class="mf">77692.799</span><span class="p">]:</span> <span class="n">master</span> <span class="n">offset</span>          <span class="mi">0</span> <span class="n">s2</span> <span class="n">freq</span>    <span class="o">+</span><span class="mi">172</span> <span class="n">path</span> <span class="n">delay</span>       <span class="mi">201</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="dynamic-switching-between-10g-25g">
+<h2>Dynamic switching between 10G &lt;-&gt; 25G<a class="headerlink" href="#dynamic-switching-between-10g-25g" title="Link to this heading">¶</a></h2>
+<p><strong>NOTE:</strong> By default the interface links up at 25G.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>NOTE:</strong> a) For dynamic switching between 10G/25G speed, make sure autonegotiation is ON for the particular interface on the NIC side. Example command to switch ON autonegotiation is: ethtool -s &lt;interface_name&gt; speed &lt;10000/25000&gt; autoneg on b) After switching, please expect a delay (~2s) for MRMAC block lock to complete and Link to be detected. c) If the block lock does not happen- immediately, try making the interface down and up to achieve block lock.</p></li>
+</ul>
+</div></blockquote>
+<p>To switch between 25G to 10G speed and vice versa dynamically use the following commands:</p>
+<section id="g-10g">
+<h3>25G -&gt; 10G:<a class="headerlink" href="#g-10g" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="n">ifconfig</span> <span class="o">&lt;</span><span class="n">interface_name</span><span class="o">&gt;</span> <span class="n">down</span>
+<span class="o">&gt;</span><span class="n">ethtool</span> <span class="o">-</span><span class="n">s</span> <span class="o">&lt;</span><span class="n">interface_name</span><span class="o">&gt;</span> <span class="n">speed</span> <span class="mi">10000</span>
+<span class="o">&gt;</span><span class="n">ifconfig</span> <span class="o">&lt;</span><span class="n">interface_name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">ip_address</span><span class="o">&gt;</span> <span class="n">up</span>
+</pre></div>
+</div>
+</section>
+<section id="g-25g">
+<h3>10G -&gt; 25G:<a class="headerlink" href="#g-25g" title="Link to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="n">ifconfig</span> <span class="o">&lt;</span><span class="n">interface_name</span><span class="o">&gt;</span> <span class="n">down</span>	
+<span class="o">&gt;</span><span class="n">ethtool</span> <span class="o">-</span><span class="n">s</span> <span class="o">&lt;</span><span class="n">interface_name</span><span class="o">&gt;</span> <span class="n">speed</span> <span class="mi">25000</span>	
+<span class="o">&gt;</span><span class="n">ifconfig</span> <span class="o">&lt;</span><span class="n">interface_name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">ip_address</span> <span class="o">&gt;</span><span class="n">up</span>
+</pre></div>
+</div>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>NOTE:</strong> Switch the rate in the NIC side first and then on the board side.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="next-steps">
+<h3>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Go back to the <a class="reference internal" href="../platform_landing.html"><span class="doc">VCK190 Ethernet TRD design start page</span></a></p></li>
+</ul>
+</section>
+</section>
+<section id="license">
+<h2>License<a class="headerlink" href="#license" title="Link to this heading">¶</a></h2>
+<p>Licensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License.</p>
+<p>You may obtain a copy of the License at
+<a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
+<p align="center">Copyright © 2023 Advanced Micro Devices, Inc</p></section>
+</section>
+
+
+           </div>
+          </div>
+          
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introduction.html" class="btn btn-neutral float-left" title="Design Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../build_vivado_design.html" class="btn btn-neutral float-right" title="TRD Package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022-2023, Xilinx, Inc. Xilinx is now a part of AMD.
+      <span class="lastupdated">Last updated on October 19, 2023.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="https://pages.gitenterprise.xilinx.com/techdocs/Test/vvas/build/html/index.html#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>
