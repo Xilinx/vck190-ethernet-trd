@@ -13,14 +13,15 @@
 
 IEEE 1588 PTP Phase synchronization Platform
 =============================================
+>**Note:** This section applies to 2022.2 Phase Synchronization TRD only.
+
 This IEEE 1588 PTP Ethernet platform demonstrates the functionality of the Multi Rate Media Access Control (MRMAC) IP  to synchronize time, frequency, and phase of the Physical Hardware clocks (PHC) connected to a packet network that support IEEE 1588 Precision Time Protocol (PTP) protocol. The PHC of the VCK 190 board is synchronized to the PHC of the link partner that supports telecom profile (an another VCK 190 Board in this case) using PTP packets.
 
 **Features**
 ------------
  
-* PTP Telecom Profiles for Time and Phase (ITU-T G.8275.1 profile)
 * 4x25G configuration
-* 2-step Precision Time Protocol (PTP)
+* 2-step PTP Phase/Frequency Synchronization
 * PTP packet over IEEEE 802.3
 * PTP packet over UDP IPV4
 * Supports TCP/UDP Traffic

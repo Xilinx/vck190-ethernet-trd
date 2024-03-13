@@ -55,7 +55,7 @@ function OptanonWrapper() { }
 <li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#tutorials">Tutorials</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#architecture-documents">Architecture Documents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#others">Others</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../platform_landing.html#ptp-1588-phase-synchronization">PTP 1588 Phase Synchronization</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../platform_landing.html#ptp-1588-phase-synchronization-2022-2-phase-sync-trd">PTP 1588 Phase Synchronization (2022.2 Phase sync TRD)</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">IEEE 1588 PTP Phase synchronization Platform</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#features"><strong>Features</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#setup-tested"><strong>Setup Tested</strong></a></li>
@@ -121,13 +121,15 @@ function OptanonWrapper() { }
  </tr>
 </table><section id="ieee-1588-ptp-phase-synchronization-platform">
 <h1>IEEE 1588 PTP Phase synchronization Platform<a class="headerlink" href="#ieee-1588-ptp-phase-synchronization-platform" title="Link to this heading">¶</a></h1>
+<blockquote>
+<div><p><strong>Note:</strong> This section applies to 2022.2 Phase Synchronization TRD only.</p>
+</div></blockquote>
 <p>This IEEE 1588 PTP Ethernet platform demonstrates the functionality of the Multi Rate Media Access Control (MRMAC) IP  to synchronize time, frequency, and phase of the Physical Hardware clocks (PHC) connected to a packet network that support IEEE 1588 Precision Time Protocol (PTP) protocol. The PHC of the VCK 190 board is synchronized to the PHC of the link partner that supports telecom profile (an another VCK 190 Board in this case) using PTP packets.</p>
 <section id="features">
 <h2><strong>Features</strong><a class="headerlink" href="#features" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p>PTP Telecom Profiles for Time and Phase (ITU-T G.8275.1 profile)</p></li>
 <li><p>4x25G configuration</p></li>
-<li><p>2-step Precision Time Protocol (PTP)</p></li>
+<li><p>2-step PTP Phase/Frequency Synchronization</p></li>
 <li><p>PTP packet over IEEEE 802.3</p></li>
 <li><p>PTP packet over UDP IPV4</p></li>
 <li><p>Supports TCP/UDP Traffic</p></li>
@@ -400,7 +402,7 @@ function OptanonWrapper() { }
 
   <div role="contentinfo">
     <p>&#169; Copyright 2022-2023, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on October 19, 2023.
+      <span class="lastupdated">Last updated on March 14, 2024.
       </span></p>
   </div>
 

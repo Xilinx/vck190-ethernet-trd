@@ -64,7 +64,7 @@ function OptanonWrapper() { }
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#others">Others</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#ptp-1588-phase-synchronization">PTP 1588 Phase Synchronization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#ptp-1588-phase-synchronization-2022-2-phase-sync-trd">PTP 1588 Phase Synchronization (2022.2 Phase sync TRD)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#porting-the-trd-package-to-vmk180-board">Porting the TRD package to VMK180 Board</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#xilinx-support">Xilinx Support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../platform_landing.html#license">License</a></li>
@@ -120,17 +120,24 @@ function OptanonWrapper() { }
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
 <p>The VCK190 Ethernet platform design uses the AXI Ethernet driver present in Linux kernel to configure MRMAC and initialize four lanes to 10G ethernet rates. The driver initializes MCDMA’s S2MM and MM2S channel descriptors and enables them to transfer data to and from system memory. The driver also does interrupt handling when a packet is received or transmitted via DMA.</p>
 <p><img alt="Linux Software Stack and Vertical Domains" src="../../../_images/sw-stack.JPG" /></p>
-<p>Note: Please refer https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842485/Linux+AXI+Ethernet+driver for more details.</p>
-<ul class="simple">
+<blockquote>
+<div><p><strong>Note:</strong> Please refer <a class="reference external" href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842485/Linux+AXI+Ethernet+driver">AXI Ethernet driver</a> for more details.</p>
+</div></blockquote>
+<ol class="simple">
 <li><p>This MRMAC driver supports 1588 functionality with Xilinx PTP  timer-syncer driver (drivers/ptp/ptp_xilinx.c).</p></li>
 <li><p>The Ethernet driver handles HW timestamps. PTP timer-syncer driver initializes the timer-syncer IP and also adjusts the same for synchronization (when device is PTP client).</p></li>
+<li><p>This solution is supported with the standard linuxptp user space application.</p></li>
+<li><p>The TRD supports a PL based PTP packet processing solution where HW shares Transmit timestamp via DMA control stream/USR-APP fields and Receive timestamp in-band via data stream.</p></li>
+</ol>
+<blockquote>
+<div><p><strong>Note:</strong> The below points related to 1 PPS signal is applicable only to the 2022.2 release version of the TRD that support phase synchronization  (<a class="reference external" href="https://account.amd.com/en/forms/downloads/design-license-xef.html?filename=vck190-ethernet-trd_Phase_2022.2.zip">2022.2 VCK190 Phase Sync TRD</a>)</p>
+</div></blockquote>
+<ol class="simple">
 <li><p>Xilinx timer-syncer supports 1PPS input from an external device (Renesas 8A34001 in this case, on VCK190 board). A timer snapshot is provided (via registers) at the time of the  1PPS HW event and an interrupt is generated, if so configured.</p></li>
 <li><p>PTP driver ( ptp_xilinx.c ) supports this 1PPS event via an interrupt handler and reads the corresponding timer snapshot.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ts2phc</span></code> application uses the 1PPS capabilities of Timer-syncer and on board Renesas device and time-synchronizes both the timers.</p></li>
-<li><p>ZCU670 TRD uses this complete solution to synchronize with an external grand master clock. This includes phase synchronization. For more details refer <a class="reference external" href="https://www.renesas.com/us/en/document/mas/linux-ptp-using-phc-adjust-phase-quick-start-manual">Renesas Phase Adjust quick start manual</a>.</p></li>
-<li><p>This solution is supported with the standard linuxptp user space application.</p></li>
-<li><p>The TRD supports a PL based PTP packet processing solution where HW shares Transmit timestamp via DMA control stream/USR-APP fields and Receive timestamp in-band via data stream.</p></li>
-</ul>
+<li><p>The 2022.2 VCK190 Ethernet TRD with Phase synchronization capability uses this complete solution to synchronize with an external grand master clock. For more details refer <a class="reference external" href="https://www.renesas.com/us/en/document/mas/linux-ptp-using-phc-adjust-phase-quick-start-manual">Renesas Phase Adjust quick start manual</a>.</p></li>
+</ol>
 </section>
 <section id="timestamp-handling-for-pl-based-ptp-packet-processing-solution">
 <h2>Timestamp Handling for PL based PTP Packet Processing solution<a class="headerlink" href="#timestamp-handling-for-pl-based-ptp-packet-processing-solution" title="Link to this heading">¶</a></h2>
@@ -185,7 +192,7 @@ function OptanonWrapper() { }
 
   <div role="contentinfo">
     <p>&#169; Copyright 2022-2023, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on October 19, 2023.
+      <span class="lastupdated">Last updated on March 14, 2024.
       </span></p>
   </div>
 

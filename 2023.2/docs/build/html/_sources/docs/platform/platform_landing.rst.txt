@@ -61,12 +61,13 @@ Others
    docs/issue_sc.md
    docs/revision_history.md
 
-PTP 1588 Phase Synchronization
-------------------------------
+PTP 1588 Phase Synchronization (2022.2 Phase sync TRD) 
+------------------------------------------------------
 .. toctree::
    :maxdepth: 1
    
-   docs/phase_sync_deployment.md
+   docs/phase_sync_deployment.md 
+Note: This section applies to 2022.2 Phase Synchronization TRD only.
 
 Porting the TRD package to VMK180 Board
 ----------------------------------------
