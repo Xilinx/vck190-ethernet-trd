@@ -33,7 +33,7 @@ This IEEE 1588 PTP Ethernet platform demonstrates the functionality of the Multi
 ### Application Deployment
 
 
-The steps to deploy and run the PTP Phase synchronization application between two vck190 board using is described below.
+The steps to deploy and run the PTP Phase synchronization application between two vck190 board is described below.
 
 
 ### Flash the SD Card 
@@ -89,7 +89,7 @@ Once the VCK190 boards are booted, set up an IP address for each ethernet port a
 	
    ``` 
 	ptp4l[422.355]: selected /dev/ptp1 as PTP clock
-	xilinx-zcu670-20222:/home/petalinux# ptp4l[422.392]: port 1: INITIALIZING to LISTENING on INIT_COMPLETE
+	xilinx-vck190-20222:/home/petalinux# ptp4l[422.392]: port 1: INITIALIZING to LISTENING on INIT_COMPLETE
 	ptp4l[422.392]: port 0: INITIALIZING to LISTENING on INIT_COMPLETE
 	ptp4l[422.817]: port 1: LISTENING to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
 	ptp4l[422.817]: selected local clock 9a11bc.fffe.62d209 as best master
@@ -125,7 +125,7 @@ Once the VCK190 boards are booted, set up an IP address for each ethernet port a
    ``` 
 	ptp4l[530.543]: selected /dev/ptp0 as PTP clock
 	ptp4l[530.546]: port 1: taking /dev/ptp0 from the command line, not the attached ptp1
-	xilinx-zcu670-20222:/home/petalinux# ptp4l[530.588]: port 1: INITIALIZING to LISTENING on INIT_COMPLETE
+	xilinx-vck190-20222:/home/petalinux# ptp4l[530.588]: port 1: INITIALIZING to LISTENING on INIT_COMPLETE
 	ptp4l[530.588]: port 0: INITIALIZING to LISTENING on INIT_COMPLETE
 	ptp4l[530.673]: port 1: new foreign master 9a11bc.fffe.62d209-1
 	ptp4l[530.923]: selected best master clock 9a11bc.fffe.62d209
@@ -163,7 +163,7 @@ TRD package File Structure:
 ----------------------------
 * The TRD package file hierarchy is shown in the below snapshot.
 
-![trd_package](../../media/vck_190_file_hier.PNG)
+![trd_package](../../media/vck_190_file_hier_2022.2.PNG)
 
 The TRD package contains: 
 
@@ -221,7 +221,7 @@ This tutorial shows how to build XSA alone using the makefiles
 
 3.	The generated XSA will be located at:
 
-   ```
+   ```bash
    ../vivado/vck190_ethernet_platform/project/mrmac_subsys_wrapper.xsa
    ```
 
@@ -234,22 +234,19 @@ Follow the steps below to build petalinux images using the Makefile in **../vck1
 1. Go to the petalinux BSP folder.
 
    ```
-   cd ../vck190-ethernet-trd-2022.2/petalinux/xilinx-vck190-trd
-   
+   cd ../vck190-ethernet-trd-2022.2/petalinux/xilinx-vck190-trd   
    ```
 2. To build boot images, source petalinux tool and run the following command. 
    
    The Makefile configures the hardware platform required to build the petalinux images and create BOOT.BIN, which comprise of  FSBL, UBoot, PMU firmware and hardware bit file.
 
    ```
-   make boot
-  
+   make boot  
    ```
 3. The generated images will be located at:
 
    ```
-   ../vck190-ethernet-trd-2022.2/petalinux/xilinx-vck190-trd/images/linux
-   
+   ../vck190-ethernet-trd-2022.2/petalinux/xilinx-vck190-trd/images/linux   
    ```
 4. Copy the image (`BOOT.BIN , rootfs.cpio.gz.uboot , Image and boot.scr` ) to the FAT32 formatted SD card and insert the card in SD card slot to run the design. This image is functionally equivalent to the prebuilt sdcard image provided with package.
    

@@ -16,23 +16,25 @@ Software Architecture of the Platform
 Introduction
 -------------------
 
-The VCK190 Ethernet platform design uses the AXI Ethernet driver present in Linux kernel to configure MRMAC and initialize four lanes to 10G ethernet rates. The driver initializes MCDMA’s S2MM and MM2S channel descriptors and enables them to transfer data to and from system memory. The driver also does interrupt handling when a packet is received or transmitted via DMA.
+The VCK190 Ethernet platform design uses the AXI Ethernet driver present in Linux kernel to configure MRMAC and initialize four lanes to 25G/10G ethernet rates. The driver initializes MCDMA’s S2MM and MM2S channel descriptors and enables them to transfer data to and from system memory. The driver also does interrupt handling when a packet is received or transmitted via DMA.
+
+**Note:** Please refer [AXI Ethernet driver](https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842485/Linux+AXI+Ethernet+driver) for more details.
+
 
 ![Linux Software Stack and Vertical Domains](../../media/sw-stack.JPG)
 
-> **Note:** Please refer [AXI Ethernet driver](https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842485/Linux+AXI+Ethernet+driver) for more details.
+
+> -	This MRMAC driver supports 1588 functionality with Xilinx PTP  timer-syncer driver (drivers/ptp/ptp_xilinx.c).
+> -	The Ethernet driver handles HW timestamps. PTP timer-syncer driver initializes the timer-syncer IP and also adjusts the same for synchronization (when device is PTP client). 
+> -	This solution is supported with the standard linuxptp user space application.
+> -	The TRD supports a PL based PTP packet processing solution where HW shares Transmit timestamp via DMA control stream/USR-APP fields and Receive timestamp in-band via data stream. 
 
 
-
-1. This MRMAC driver supports 1588 functionality with Xilinx PTP  timer-syncer driver (drivers/ptp/ptp_xilinx.c).
-2.  The Ethernet driver handles HW timestamps. PTP timer-syncer driver initializes the timer-syncer IP and also adjusts the same for synchronization (when device is PTP client). 
-3. This solution is supported with the standard linuxptp user space application.
-4. The TRD supports a PL based PTP packet processing solution where HW shares Transmit timestamp via DMA control stream/USR-APP fields and Receive timestamp in-band via data stream. 
-> **Note:** The below points related to 1 PPS signal is applicable only to the 2022.2 release version of the TRD that support phase synchronization  ([2022.2 VCK190 Phase Sync TRD](https://account.amd.com/en/forms/downloads/design-license-xef.html?filename=vck190-ethernet-trd_Phase_2022.2.zip))
-1. Xilinx timer-syncer supports 1PPS input from an external device (Renesas 8A34001 in this case, on VCK190 board). A timer snapshot is provided (via registers) at the time of the  1PPS HW event and an interrupt is generated, if so configured.
-2. PTP driver ( ptp_xilinx.c ) supports this 1PPS event via an interrupt handler and reads the corresponding timer snapshot. 
-3. `ts2phc` application uses the 1PPS capabilities of Timer-syncer and on board Renesas device and time-synchronizes both the timers.
-4. The 2022.2 VCK190 Ethernet TRD with Phase synchronization capability uses this complete solution to synchronize with an external grand master clock. For more details refer [Renesas Phase Adjust quick start manual](https://www.renesas.com/us/en/document/mas/linux-ptp-using-phc-adjust-phase-quick-start-manual).
+**NOTE:** The below points referring to 1 PPS signal are applicable only to the 2022.2 release version of the TRD that supports phase synchronization  ([2022.2 VCK190 Phase Sync TRD](https://account.amd.com/en/forms/downloads/design-license-xef.html?filename=vck190-ethernet-trd_Phase_2022.2.zip))
+>> -	Xilinx timer-syncer supports 1PPS input from an external device (Renesas 8A34001 in this case, on VCK190 board). A timer snapshot is provided (via registers) at the time of the  1PPS HW event and an interrupt is generated, if so configured.
+>> -	PTP driver ( ptp_xilinx.c ) supports this 1PPS event via an interrupt handler and reads the corresponding timer snapshot. 
+>> -	`ts2phc` application uses the 1PPS capabilities of Timer-syncer and on board Renesas device and time-synchronizes both the timers.
+>> -	The 2022.2 VCK190 Ethernet TRD with Phase synchronization capability uses this complete solution to synchronize with an external grand master clock. For more details refer [Renesas Phase Adjust quick start manual](https://www.renesas.com/us/en/document/mas/linux-ptp-using-phc-adjust-phase-quick-start-manual).
 
 Timestamp Handling for PL based PTP Packet Processing solution
 ----------------------------------------------------------------------------
@@ -50,7 +52,8 @@ Timestamp Handling for PL based PTP Packet Processing solution
 
 You can choose any of the following next steps:
 
-* Go to the [Application deployment page](app_deployment.md)
+* Go to the Frequency Synchronization [Application deployment page](app_deployment.md)
+* Go to the Phase Synchronization [Application deployment page](phase_sync_deployment.md)
 * Go back to the [VCK190 Ethernet TRD design start page](../platform_landing.md)
 * Read [Hardware Architecture of PTP Packet Processor](hw_arch_ptp_pkt_proc.md)  
 
