@@ -1,4 +1,4 @@
-﻿<table class="sphinxhide">
+﻿`<table class="sphinxhide">
  <tr>
    <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/><h1> Versal Prime - VCK190 Evaluation Kit Ethernet TRD Tutorial</h1>
    </td>
@@ -122,7 +122,8 @@ Once the host and VCK190 are booted, set up an IP address for each ethernet port
 	>ifconfig <interface_name> down	
 	>ifconfig <interface_name> <ip_address> up
 
-> * **NOTE:** While making the interface up, make sure a valid IP address is set for the interface.
+> * **NOTE - 1 :** While making the interface up, make sure a valid IP address is set for the interface.
+> * **NOTE - 2 :** If using a Board to Board setup, please ensure that unique MAC addresses are assigned to all the interfaces on both boards. Otherwise both the interfaces on board 1 and board 2 might have the same MAC addresses resulting in communication or PTP failures, Example command: ifconfig <interface name> hw ether <MAC address>.
 
 ## Iperf Commands
 

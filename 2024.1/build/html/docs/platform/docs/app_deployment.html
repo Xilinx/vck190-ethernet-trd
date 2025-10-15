@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
@@ -21,7 +21,7 @@ function OptanonWrapper() { }
   <![endif]-->
   
         <script src="../../../_static/documentation_options.js?v=2406f4f9"></script>
-        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -109,7 +109,7 @@ function OptanonWrapper() { }
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <table class="sphinxhide">
+  <p>`<table class="sphinxhide"></p>
  <tr>
    <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/><h1> Versal Prime - VCK190 Evaluation Kit Ethernet TRD Tutorial</h1>
    </td>
@@ -209,7 +209,8 @@ function OptanonWrapper() { }
 </div>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>NOTE:</strong> While making the interface up, make sure a valid IP address is set for the interface.</p></li>
+<li><p><strong>NOTE - 1 :</strong> While making the interface up, make sure a valid IP address is set for the interface.</p></li>
+<li><p><strong>NOTE - 2 :</strong> If using a Board to Board setup, please ensure that unique MAC addresses are assigned to all the interfaces on both boards. Otherwise both the interfaces on board 1 and board 2 might have the same MAC addresses resulting in communication or PTP failures, Example command: ifconfig <interface name> hw ether <MAC address>.</p></li>
 </ul>
 </div></blockquote>
 </section>
@@ -699,7 +700,7 @@ ptp4l[77692.799]: master offset          0 s2 freq    +172 path delay       201
 
   <div role="contentinfo">
     <p>&#169; Copyright 2022-2023, Xilinx, Inc. Xilinx is now a part of AMD.
-      <span class="lastupdated">Last updated on May 31, 2024.
+      <span class="lastupdated">Last updated on October 10, 2025.
       </span></p>
   </div>
 
